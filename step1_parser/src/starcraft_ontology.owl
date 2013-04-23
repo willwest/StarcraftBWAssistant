@@ -1,2574 +1,1933 @@
 <?xml version="1.0"?>
 
 
-<!DOCTYPE Ontology [
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY starcraft_ontology "http://insyte.cse.lehigh.edu/starcraft_ontology#" >
 ]>
 
 
-<Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://insyte.cse.lehigh.edu/starcraft_ontology"
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:starcraft_ontology="http://insyte.cse.lehigh.edu/starcraft_ontology#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://insyte.cse.lehigh.edu/starcraft_ontology">
-    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
-    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
-    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
-    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
-    <Declaration>
-        <Class IRI="#AICompetitor"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Ability"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Academy"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#AdvancedStructure"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Armory"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Barracks"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#BasicStructure"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Battlecruiser"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Bunker"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Chokepoint"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#CommandCenter"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Competitor"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ContestedChokepoint"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ContestedRegion"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Dropship"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#EngineeringBay"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Factory"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#FightingUnit"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#FightingUnitAbility"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Firebat"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#FlyingVehicle"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Ghost"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Goliath"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#GroundVehicle"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#HumanCompetitor"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#LosingPlayer"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Map"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Marine"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Match"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Medic"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#MissleTurret"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Player"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Protoss"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Race"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Refinery"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Region"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ScienceFacility"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ScienceVessel"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Soldier"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Starport"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Structure"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#StructureAbility"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#SupplyDepot"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Tank"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Terran"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Unit"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Valkyrie"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Vulture"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#WinningPlayer"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#WorkerUnit"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Wrath"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Zerg"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#builds"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#canBeBuiltBy"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#canBeTrainedBy"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#canBuild"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#canTrain"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#connectedTo"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#contains"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#containsUnitOf"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hadStructure"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasChokepoint"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasHumanCompetitor"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasMap"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasPlayer"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasStructure"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasUnit"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasUnitIn"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isInRegion"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#isOwnedBy"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#playedAs"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#trains"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#unlocks"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasArmor"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasAttackDamage"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasAttackRange"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasBuildTime"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasElapsedGameTime"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasEnergy"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasGasCost"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasHitPoints"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasMaxNumOfPlayers"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasMineralCost"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasName"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasNumberOfPlayers"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasNumberOfRegions"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasRateOfFire"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasSize"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasSpeed"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasStartDate"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasTileSet"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasTravelType"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasWebsite"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty IRI="#hasWidth"/>
-    </Declaration>
-    <Declaration>
-        <DataProperty abbreviatedIRI="owl:sameAs"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#academy2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#academyAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#armoryAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#barracks2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#barrcksAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#battleCruiserAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#bunkerAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#chokepoint1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#chokepoint2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#chokepoint3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#commandCenterAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#commandcenter1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#commandcenter2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#dropshipAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#engineeringbayAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#factory2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#factoryAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#firebat2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#firebatAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#flash"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#ghostAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#goliathAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#map001"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#marine2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#marineAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#match1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#medicAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#missleturretAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#player1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#player2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#refinery2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#refineryAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#region1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#region2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#scienceVesselAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#sciencefaciliyAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#starportAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#supplydepot2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#supplydepotAvaliable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#tankAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#valkyrieAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#vultureAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerAvailable"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerUnit1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerUnit2"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerUnit2.1"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerUnit2.3"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#workerUnit2.4"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="#wraithAvailable"/>
-    </Declaration>
-    <EquivalentClasses>
-        <Class IRI="#Chokepoint"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Chokepoint"/>
-            <ObjectExactCardinality cardinality="2">
-                <ObjectProperty IRI="#connectedTo"/>
-                <Class IRI="#Region"/>
-            </ObjectExactCardinality>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#ContestedRegion"/>
-        <ObjectIntersectionOf>
-            <Class IRI="#Region"/>
-            <ObjectMinCardinality cardinality="2">
-                <ObjectProperty IRI="#containsUnitOf"/>
-                <Class IRI="#Player"/>
-            </ObjectMinCardinality>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hadStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#academyAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Academy"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#firebatAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Academy"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#medicAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Armory"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Factory"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#goliathAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#ScienceFacility"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#ghostAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#bunkerAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Barracks"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#factoryAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#EngineeringBay"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#bunkerAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#EngineeringBay"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#missleturretAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Factory"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#armoryAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Factory"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#starportAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#ScienceFacility"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Starport"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#battleCruiserAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectIntersectionOf>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasStructure"/>
-                <Class IRI="#Starport"/>
-            </ObjectSomeValuesFrom>
-            <ObjectSomeValuesFrom>
-                <ObjectProperty IRI="#hasUnit"/>
-                <Class IRI="#WorkerUnit"/>
-            </ObjectSomeValuesFrom>
-        </ObjectIntersectionOf>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#sciencefaciliyAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasStructure"/>
-            <Class IRI="#Barracks"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#marineAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasStructure"/>
-            <Class IRI="#Factory"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#tankAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasStructure"/>
-            <Class IRI="#Factory"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#vultureAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasStructure"/>
-            <Class IRI="#Starport"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#dropshipAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasStructure"/>
-            <Class IRI="#Starport"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canTrain"/>
-            <NamedIndividual IRI="#wraithAvailable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasUnit"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#barrcksAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasUnit"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#commandCenterAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasUnit"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#engineeringbayAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasUnit"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#refineryAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <ObjectSomeValuesFrom>
-            <ObjectProperty IRI="#hasUnit"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectSomeValuesFrom>
-        <ObjectHasValue>
-            <ObjectProperty IRI="#canBuild"/>
-            <NamedIndividual IRI="#supplydepotAvaliable"/>
-        </ObjectHasValue>
-    </EquivalentClasses>
-    <SubClassOf>
-        <Class IRI="#AICompetitor"/>
-        <Class IRI="#Competitor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Academy"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#AdvancedStructure"/>
-        <Class IRI="#Structure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Armory"/>
-        <Class IRI="#AdvancedStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Barracks"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#BasicStructure"/>
-        <Class IRI="#Structure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Battlecruiser"/>
-        <Class IRI="#FlyingVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Bunker"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Chokepoint"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#CommandCenter"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ContestedChokepoint"/>
-        <Class IRI="#Chokepoint"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ContestedRegion"/>
-        <Class IRI="#Region"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Dropship"/>
-        <Class IRI="#FlyingVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#EngineeringBay"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Factory"/>
-        <Class IRI="#AdvancedStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#FightingUnit"/>
-        <Class IRI="#Unit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#FightingUnitAbility"/>
-        <Class IRI="#Ability"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Firebat"/>
-        <Class IRI="#Soldier"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#FlyingVehicle"/>
-        <Class IRI="#FightingUnit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Ghost"/>
-        <Class IRI="#Soldier"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Goliath"/>
-        <Class IRI="#GroundVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#GroundVehicle"/>
-        <Class IRI="#FightingUnit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#HumanCompetitor"/>
-        <Class IRI="#Competitor"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#LosingPlayer"/>
-        <Class IRI="#Player"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Map"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Marine"/>
-        <Class IRI="#Soldier"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Match"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Medic"/>
-        <Class IRI="#Soldier"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#MissleTurret"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Player"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Protoss"/>
-        <Class IRI="#Race"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Race"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Refinery"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Region"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ScienceFacility"/>
-        <Class IRI="#AdvancedStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ScienceVessel"/>
-        <Class IRI="#FlyingVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Soldier"/>
-        <Class IRI="#FightingUnit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Starport"/>
-        <Class IRI="#AdvancedStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Structure"/>
-        <Class IRI="#Unit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#StructureAbility"/>
-        <Class IRI="#Ability"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#SupplyDepot"/>
-        <Class IRI="#BasicStructure"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Tank"/>
-        <Class IRI="#GroundVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Terran"/>
-        <Class IRI="#Race"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Unit"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Valkyrie"/>
-        <Class IRI="#FlyingVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Vulture"/>
-        <Class IRI="#GroundVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#WinningPlayer"/>
-        <Class IRI="#Player"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#WorkerUnit"/>
-        <Class IRI="#FightingUnit"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Wrath"/>
-        <Class IRI="#FlyingVehicle"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Zerg"/>
-        <Class IRI="#Race"/>
-    </SubClassOf>
-    <DisjointClasses>
-        <Class IRI="#LosingPlayer"/>
-        <Class IRI="#WinningPlayer"/>
-    </DisjointClasses>
-    <DisjointUnion>
-        <Class IRI="#AdvancedStructure"/>
-        <Class IRI="#Armory"/>
-        <Class IRI="#Factory"/>
-        <Class IRI="#ScienceFacility"/>
-        <Class IRI="#Starport"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#FightingUnit"/>
-        <Class IRI="#FlyingVehicle"/>
-        <Class IRI="#GroundVehicle"/>
-        <Class IRI="#Soldier"/>
-        <Class IRI="#WorkerUnit"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#FlyingVehicle"/>
-        <Class IRI="#Battlecruiser"/>
-        <Class IRI="#Dropship"/>
-        <Class IRI="#ScienceVessel"/>
-        <Class IRI="#Valkyrie"/>
-        <Class IRI="#Wrath"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#GroundVehicle"/>
-        <Class IRI="#Goliath"/>
-        <Class IRI="#Tank"/>
-        <Class IRI="#Vulture"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#Race"/>
-        <Class IRI="#Protoss"/>
-        <Class IRI="#Terran"/>
-        <Class IRI="#Zerg"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#Soldier"/>
-        <Class IRI="#Firebat"/>
-        <Class IRI="#Ghost"/>
-        <Class IRI="#Marine"/>
-        <Class IRI="#Medic"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#Structure"/>
-        <Class IRI="#Academy"/>
-        <Class IRI="#AdvancedStructure"/>
-        <Class IRI="#Barracks"/>
-        <Class IRI="#Bunker"/>
-        <Class IRI="#CommandCenter"/>
-        <Class IRI="#EngineeringBay"/>
-        <Class IRI="#MissleTurret"/>
-        <Class IRI="#Refinery"/>
-        <Class IRI="#SupplyDepot"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class IRI="#Unit"/>
-        <Class IRI="#FightingUnit"/>
-        <Class IRI="#Structure"/>
-    </DisjointUnion>
-    <DisjointUnion>
-        <Class abbreviatedIRI="owl:Thing"/>
-        <Class IRI="#Ability"/>
-        <Class IRI="#Chokepoint"/>
-        <Class IRI="#Map"/>
-        <Class IRI="#Match"/>
-        <Class IRI="#Player"/>
-        <Class IRI="#Race"/>
-        <Class IRI="#Region"/>
-        <Class IRI="#Unit"/>
-    </DisjointUnion>
-    <ClassAssertion>
-        <Class IRI="#Academy"/>
-        <NamedIndividual IRI="#academy2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Barracks"/>
-        <NamedIndividual IRI="#barracks2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Chokepoint"/>
-        <NamedIndividual IRI="#chokepoint1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Chokepoint"/>
-        <NamedIndividual IRI="#chokepoint2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Chokepoint"/>
-        <NamedIndividual IRI="#chokepoint3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#CommandCenter"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#CommandCenter"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Factory"/>
-        <NamedIndividual IRI="#factory2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Firebat"/>
-        <NamedIndividual IRI="#firebat2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#HumanCompetitor"/>
-        <NamedIndividual IRI="#flash"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Map"/>
-        <NamedIndividual IRI="#map001"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Marine"/>
-        <NamedIndividual IRI="#marine2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Match"/>
-        <NamedIndividual IRI="#match1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Player"/>
-        <NamedIndividual IRI="#player1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Player"/>
-        <NamedIndividual IRI="#player2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Refinery"/>
-        <NamedIndividual IRI="#refinery2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Region"/>
-        <NamedIndividual IRI="#region1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#Region"/>
-        <NamedIndividual IRI="#region2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#SupplyDepot"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#WorkerUnit"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#WorkerUnit"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#WorkerUnit"/>
-        <NamedIndividual IRI="#workerUnit2.1"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#WorkerUnit"/>
-        <NamedIndividual IRI="#workerUnit2.3"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="#WorkerUnit"/>
-        <NamedIndividual IRI="#workerUnit2.4"/>
-    </ClassAssertion>
-    <SameIndividual>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <NamedIndividual IRI="#workerUnit2.1"/>
-    </SameIndividual>
-    <SameIndividual>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <NamedIndividual IRI="#workerUnit2.3"/>
-    </SameIndividual>
-    <SameIndividual>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <NamedIndividual IRI="#workerUnit2.4"/>
-    </SameIndividual>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#chokepoint1"/>
-        <NamedIndividual IRI="#chokepoint2"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#chokepoint1"/>
-        <NamedIndividual IRI="#chokepoint3"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#chokepoint2"/>
-        <NamedIndividual IRI="#chokepoint3"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#player1"/>
-        <NamedIndividual IRI="#player2"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#region1"/>
-        <NamedIndividual IRI="#region2"/>
-    </DifferentIndividuals>
-    <DifferentIndividuals>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-    </DifferentIndividuals>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#academy2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint1"/>
-        <NamedIndividual IRI="#region1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint1"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint2"/>
-        <NamedIndividual IRI="#region1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint3"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#connectedTo"/>
-        <NamedIndividual IRI="#chokepoint3"/>
-        <NamedIndividual IRI="#region1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <NamedIndividual IRI="#region1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#playedAs"/>
-        <NamedIndividual IRI="#flash"/>
-        <NamedIndividual IRI="#player2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#marine2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasMap"/>
-        <NamedIndividual IRI="#match1"/>
-        <NamedIndividual IRI="#map001"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPlayer"/>
-        <NamedIndividual IRI="#match1"/>
-        <NamedIndividual IRI="#player1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasPlayer"/>
-        <NamedIndividual IRI="#match1"/>
-        <NamedIndividual IRI="#player2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player1"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player1"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#barracks2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#factory2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#refinery2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#academy2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasStructure"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#firebat2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#workerUnit2.1"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#workerUnit2.3"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#workerUnit2.4"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#hasUnit"/>
-        <NamedIndividual IRI="#player2"/>
-        <NamedIndividual IRI="#marine2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <ObjectPropertyAssertion>
-        <ObjectProperty IRI="#isInRegion"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <NamedIndividual IRI="#region2"/>
-    </ObjectPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#academy2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#academy2"/>
-        <Literal datatypeIRI="&xsd;int">100</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#academy2"/>
-        <Literal datatypeIRI="&xsd;int">1000</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#academy2"/>
-        <Literal datatypeIRI="&xsd;int">125</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <Literal datatypeIRI="&xsd;int">1000</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#barracks2"/>
-        <Literal datatypeIRI="&xsd;int">150</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <Literal datatypeIRI="&xsd;int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <Literal datatypeIRI="&xsd;int">1500</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#commandcenter1"/>
-        <Literal datatypeIRI="&xsd;int">400</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <Literal datatypeIRI="&xsd;int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <Literal datatypeIRI="&xsd;int">1500</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#commandcenter2"/>
-        <Literal datatypeIRI="&xsd;int">400</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">2</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackRange"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">7</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEnergy"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">25</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasRateOfFire"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasSize"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasSpeed"/>
-        <NamedIndividual IRI="#firebat2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty abbreviatedIRI="owl:sameAs"/>
-        <NamedIndividual IRI="#flash"/>
-        <Literal datatypeIRI="&xsd;anyURI">http://www.freebase.com/m/07k4xm8</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNumberOfPlayers"/>
-        <NamedIndividual IRI="#map001"/>
-        <Literal datatypeIRI="&xsd;int">2</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasNumberOfRegions"/>
-        <NamedIndividual IRI="#map001"/>
-        <Literal datatypeIRI="&xsd;int">2</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasTileSet"/>
-        <NamedIndividual IRI="#map001"/>
-        <Literal datatypeIRI="&xsd;string">Dessert</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">6</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackRange"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">7</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEnergy"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#marine2"/>
-        <Literal datatypeIRI="&xsd;int">60</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasElapsedGameTime"/>
-        <NamedIndividual IRI="#match1"/>
-        <Literal datatypeIRI="&xsd;dateTime">2009-06-30T00:01:53</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasStartDate"/>
-        <NamedIndividual IRI="#match1"/>
-        <Literal datatypeIRI="&xsd;dateTime">2009-06-30</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasWebsite"/>
-        <NamedIndividual IRI="#match1"/>
-        <Literal datatypeIRI="&xsd;anyURI">http://www.teamliquid.net/tlpd/korean/games/14286_firebathero_vs_Flash</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <Literal datatypeIRI="&xsd;int">10</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <Literal datatypeIRI="&xsd;int">100</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#refinery2"/>
-        <Literal datatypeIRI="&xsd;int">100</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <Literal datatypeIRI="&xsd;int">500</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#supplydepot2"/>
-        <Literal datatypeIRI="&xsd;int">100</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackRange"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEnergy"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#workerUnit1"/>
-        <Literal datatypeIRI="&xsd;int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasArmor"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">5</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasAttackRange"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasBuildTime"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">20</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasEnergy"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasGasCost"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">0</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasHitPoints"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">60</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasMineralCost"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">50</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasSize"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">1</Literal>
-    </DataPropertyAssertion>
-    <DataPropertyAssertion>
-        <DataProperty IRI="#hasSpeed"/>
-        <NamedIndividual IRI="#workerUnit2"/>
-        <Literal datatypeIRI="&xsd;int">2</Literal>
-    </DataPropertyAssertion>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#canBeTrainedBy"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#canTrain"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasHumanCompetitor"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#hasPlayer"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
-    </SubObjectPropertyOf>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#canBeBuiltBy"/>
-        <ObjectProperty IRI="#canBuild"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#canBeTrainedBy"/>
-        <ObjectProperty IRI="#canTrain"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#connectedTo"/>
-        <ObjectProperty IRI="#hasChokepoint"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#contains"/>
-        <ObjectProperty IRI="#isInRegion"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#containsUnitOf"/>
-        <ObjectProperty IRI="#hasUnitIn"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#isOwnedBy"/>
-        <ObjectProperty IRI="#hasUnit"/>
-    </InverseObjectProperties>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#isInRegion"/>
-    </FunctionalObjectProperty>
-    <InverseFunctionalObjectProperty>
-        <ObjectProperty IRI="#hasStructure"/>
-    </InverseFunctionalObjectProperty>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#builds"/>
-        <Class IRI="#Structure"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#canBuild"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#canTrain"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#connectedTo"/>
-        <Class IRI="#Chokepoint"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#containsUnitOf"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hadStructure"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasChokepoint"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasHumanCompetitor"/>
-        <Class IRI="#Match"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasMap"/>
-        <Class IRI="#Match"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasPlayer"/>
-        <Class IRI="#Match"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasStructure"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasUnit"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#hasUnitIn"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#isInRegion"/>
-        <Class IRI="#Unit"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#playedAs"/>
-        <Class IRI="#Competitor"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#trains"/>
-        <Class IRI="#Structure"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyDomain>
-        <ObjectProperty IRI="#unlocks"/>
-        <Class IRI="#Structure"/>
-    </ObjectPropertyDomain>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#builds"/>
-        <ObjectUnionOf>
-            <Class IRI="#FlyingVehicle"/>
-            <Class IRI="#GroundVehicle"/>
-            <Class IRI="#Structure"/>
-        </ObjectUnionOf>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#canBuild"/>
-        <Class IRI="#StructureAbility"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#canTrain"/>
-        <Class IRI="#FightingUnitAbility"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#connectedTo"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#containsUnitOf"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hadStructure"/>
-        <Class IRI="#Structure"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasChokepoint"/>
-        <Class IRI="#Chokepoint"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasHumanCompetitor"/>
-        <Class IRI="#HumanCompetitor"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasMap"/>
-        <Class IRI="#Map"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasPlayer"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasStructure"/>
-        <Class IRI="#Structure"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasUnit"/>
-        <Class IRI="#Unit"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#hasUnitIn"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#isInRegion"/>
-        <Class IRI="#Region"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#playedAs"/>
-        <Class IRI="#Player"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#trains"/>
-        <ObjectUnionOf>
-            <Class IRI="#Soldier"/>
-            <Class IRI="#WorkerUnit"/>
-        </ObjectUnionOf>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="#unlocks"/>
-        <Class IRI="#Unit"/>
-    </ObjectPropertyRange>
-    <DisjointObjectProperties>
-        <ObjectProperty IRI="#builds"/>
-        <ObjectProperty IRI="#trains"/>
-    </DisjointObjectProperties>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasArmor"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasAttackRange"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasBuildTime"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasElapsedGameTime"/>
-        <Class IRI="#Match"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasEnergy"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasGasCost"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasHitPoints"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasMaxNumOfPlayers"/>
-        <Class IRI="#Map"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasMineralCost"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasName"/>
-        <ObjectUnionOf>
-            <Class IRI="#Map"/>
-            <Class IRI="#Region"/>
-        </ObjectUnionOf>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasNumberOfPlayers"/>
-        <ObjectUnionOf>
-            <Class IRI="#Map"/>
-            <Class IRI="#Match"/>
-        </ObjectUnionOf>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasNumberOfRegions"/>
-        <Class IRI="#Map"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasRateOfFire"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasSize"/>
-        <Class IRI="#Unit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasSpeed"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasTileSet"/>
-        <Class IRI="#Map"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasTravelType"/>
-        <Class IRI="#FightingUnit"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty IRI="#hasWidth"/>
-        <Class IRI="#Chokepoint"/>
-    </DataPropertyDomain>
-    <DataPropertyDomain>
-        <DataProperty abbreviatedIRI="owl:sameAs"/>
-        <Class abbreviatedIRI="owl:Thing"/>
-    </DataPropertyDomain>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasArmor"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasAttackDamage"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasAttackRange"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasBuildTime"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasElapsedGameTime"/>
-        <Datatype abbreviatedIRI="xsd:dateTime"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasEnergy"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasGasCost"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasHitPoints"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasMaxNumOfPlayers"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasMineralCost"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasName"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasNumberOfPlayers"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasNumberOfRegions"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasRateOfFire"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasSize"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasSpeed"/>
-        <Datatype abbreviatedIRI="xsd:int"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasStartDate"/>
-        <Datatype abbreviatedIRI="xsd:dateTime"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasTileSet"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasTravelType"/>
-        <Datatype abbreviatedIRI="xsd:string"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasWebsite"/>
-        <Datatype abbreviatedIRI="xsd:anyURI"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty IRI="#hasWidth"/>
-        <Datatype abbreviatedIRI="xsd:double"/>
-    </DataPropertyRange>
-    <DataPropertyRange>
-        <DataProperty abbreviatedIRI="owl:sameAs"/>
-        <Datatype abbreviatedIRI="xsd:anyURI"/>
-    </DataPropertyRange>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#AICompetitor</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">AI Competitor</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Academy</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">An acadmey is used to do research for upgrades.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#AdvancedStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">These structures can be produced after certain basic structures have been built.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#AdvancedStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Advanced Structure</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Armory</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The armory is used to do advanced research.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Barracks</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A barracks is used to produce soldiers.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#BasicStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Most basic structures are avaliable to be produced as soon as a game starts.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#BasicStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Basic Structure</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Battlecruiser</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The battle cruiser is Tarrens most powerful unit and employs the most powerful weapons.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Bunker</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A bunker is the main defense for a base from ground forces.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#CommandCenter</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The command center is the heart of a base and is used to collect resources and build workers.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#CommandCenter</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Command Center</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#ContestedChokepoint</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Contested Chokepoint</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#ContestedRegion</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Contested Region</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Dropship</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A dropship is used mainly to load and unload ground units to different parts of the map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#EngineeringBay</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The bay can be used to research upgrades to soldiers attack abilities and armor.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#EngineeringBay</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Engineering Bay</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Factory</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The factory is used to produce ground vehicles.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#FightingUnit</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A fighting unit is any unit which is not a structure (ie can move and attack).</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#FightingUnit</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Fighting Unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#FightingUnitAbility</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">This class represents a fighting units ability to be produced</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#FightingUnitAbility</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Fighting Unit Ability</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Firebat</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A firebat can shot fire and is effective at close range.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#FlyingVehicle</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Flying units are produced exclusively at a starport and can move around only by flying.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#FlyingVehicle</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Flying Vehicle</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Ghost</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The ghost is like a sniper, effective at long range and also has a number of abilities such as turning invinsible. </Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Goliath</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">This unit is essentialy a walking robot which is effective in attacking flying units and ground units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#GroundVehicle</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Ground units are produced only at a factory.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#GroundVehicle</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Ground Vehicle</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#HumanCompetitor</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Human Competitor</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#LosingPlayer</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Losing Player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Marine</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The marine is the basic soldier but effective at attacking in large groups.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Medic</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The medic can cause some damage to enemy units but is moslty good for healing units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#MissleTurret</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Missle turrets are a bases main defense from air units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#MissleTurret</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Missle Turret</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Player</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">This class represents a player, whether he&apos;s lossing and winning and all his resources.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Race</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The three races a player can choose from are Protoss, Terran, and Zerg. This ontology focuses only on Terran.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Refinery</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The refinery is used to harvest gas.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Region</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A region represents an area on a map which is controlled by a player.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ScienceFacility</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Science facility is used to do advance cabaility research.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#ScienceFacility</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Science Facility</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#ScienceVessel</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The science vessel has limited attack capability but can be used to apply force shields to other units to protect them.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#ScienceVessel</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Science Vessel</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Soldier</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Soldiers as the name implies are human units which walk around and are produced only at the barracks.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Starport</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A starport is used to produced flying units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Structure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">All structures can be produced by a worker unit only.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#StructureAbility</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Structure Ability</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#SupplyDepot</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The role of a supply depot is mainly to increase the limit count of population.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#SupplyDepot</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Supply Depot</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Tank</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The tank is the most powerful ground unit which also has the largest range of attack</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Unit</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">A unit in the game is either a building a fighting unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Valkyrie</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The valkyrie ship can not attack ground units but is highly effective in attacking other flying units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Vulture</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The vulture has lite armor and attack points but is the fastest unit Tarrens can build.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-        <IRI>#WinningPlayer</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Winning Player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#WorkerUnit</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Worker units or SCV are used mainly for building structures and harvesting minerals and gas.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Wrath</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The wrath is the main attack flying vehicle for Tarrens and can attak flying and ground units.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#builds</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the structure that builds a particular unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#canBeBuiltBy</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents a building that can be built by a player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#canBeTrainedBy</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents whether a player can produce a unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#canBuild</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a player has the ability to build a specific structure</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#canTrain</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents a fighting unit that can be trained by a player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#connectedTo</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">expresses that a chokepoint connects to a region</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#contains</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">expresses that a region contains a unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#containsUnitOf</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a region contains a unit of a specific player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hadStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a player had a structure in the past</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasArmor</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Represents the armor level of a unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasAttackDamage</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Represents the amount of damage a unit can do in attacking.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasAttackRange</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the range of attack for a unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasBuildTime</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows how long it takes to produce the unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasChokepoint</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">states that a region contains a particular chokepiont</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasElapsedGameTime</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the elapsed game time</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasEnergy</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the energy level of a unit (if avaliable).</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasGasCost</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows how much gas is required to produce a unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasHitPoints</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the health level for a unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasHumanCompetitor</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a match has a particular human competitor</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasMap</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the map used in a match</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasMaxNumOfPlayers</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the max number of players in a map</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasMineralCost</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the cost of minerals required to buld the unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasName</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Name of a map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasNumberOfPlayers</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Total number of players in a match.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasNumberOfRegions</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the total number of regions in a map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasPlayer</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents a player in a match</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasRateOfFire</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the rate of fire for a unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasSize</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows the total number of tilesets a unit takes up on a map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasSpeed</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Shows speed of unit.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasStartDate</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the start date of the match</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasStructure</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a player owns a structure</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasTileSet</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">The theme tileset of a map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasTravelType</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Represents the way a unit travels.
-</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasUnit</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a player owns a unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasUnitIn</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a player has a unit in a particular region</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasWebsite</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the website containing information about a match, if available</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#hasWidth</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Used to identfy the size of a chokepoint between regions on a map.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#isInRegion</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents that a unit is in a region</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#isOwnedBy</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">shows ownership of a unit by a player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#match1</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">This is the current match, between players 1 and 2 on map001.</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#playedAs</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the real-world competitor that controls a player</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#trains</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents which structure is responsible for training a particular Unit</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#unlocks</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">represents the Unit that unlocks a given structure</Literal>
-    </AnnotationAssertion>
-</Ontology>
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Ontology rdf:about="http://insyte.cse.lehigh.edu/starcraft_ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#builds -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;builds">
+        <rdfs:comment>represents the structure that builds a particular unit</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Structure"/>
+        <propertyDisjointWith rdf:resource="&starcraft_ontology;trains"/>
+        <rdfs:range>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;FlyingVehicle"/>
+                    <rdf:Description rdf:about="&starcraft_ontology;GroundVehicle"/>
+                    <rdf:Description rdf:about="&starcraft_ontology;Structure"/>
+                </unionOf>
+            </Class>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#canBeBuiltBy -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;canBeBuiltBy">
+        <rdfs:comment>represents a building that can be built by a player</rdfs:comment>
+        <inverseOf rdf:resource="&starcraft_ontology;canBuild"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#canBeTrainedBy -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;canBeTrainedBy">
+        <rdfs:comment>represents whether a player can produce a unit</rdfs:comment>
+        <inverseOf rdf:resource="&starcraft_ontology;canTrain"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#canBuild -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;canBuild">
+        <rdfs:comment>represents that a player has the ability to build a specific structure</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;StructureAbility"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#canTrain -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;canTrain">
+        <rdfs:comment>represents a fighting unit that can be trained by a player</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;FightingUnitAbility"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#connectedTo -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;connectedTo">
+        <rdfs:comment>expresses that a chokepoint connects to a region</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Region"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#contains -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;contains">
+        <rdfs:comment>expresses that a region contains a unit</rdfs:comment>
+        <inverseOf rdf:resource="&starcraft_ontology;isInRegion"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#containsUnitOf -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;containsUnitOf">
+        <rdfs:comment>represents that a region contains a unit of a specific player</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Region"/>
+        <inverseOf rdf:resource="&starcraft_ontology;hasUnitIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hadStructure -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hadStructure">
+        <rdfs:comment>represents that a player had a structure in the past</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Structure"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasChokepoint -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasChokepoint">
+        <rdfs:comment>states that a region contains a particular chokepiont</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Region"/>
+        <inverseOf rdf:resource="&starcraft_ontology;connectedTo"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasHumanCompetitor -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasHumanCompetitor">
+        <rdfs:comment>represents that a match has a particular human competitor</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;HumanCompetitor"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Match"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasMap -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasMap">
+        <rdfs:comment>represents the map used in a match</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;Map"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Match"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasPlayer -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasPlayer">
+        <rdfs:comment>represents a player in a match</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Match"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasStructure -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasStructure">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment>represents that a player owns a structure</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Structure"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasUnit -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasUnit">
+        <rdfs:comment>represents that a player owns a unit</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Unit"/>
+        <inverseOf rdf:resource="&starcraft_ontology;isOwnedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasUnitIn -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;hasUnitIn">
+        <rdfs:comment>represents that a player has a unit in a particular region</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Player"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Region"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#isInRegion -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;isInRegion">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>represents that a unit is in a region</rdfs:comment>
+        <rdfs:range rdf:resource="&starcraft_ontology;Region"/>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#isOwnedBy -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;isOwnedBy">
+        <rdfs:comment>shows ownership of a unit by a player</rdfs:comment>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#playedAs -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;playedAs">
+        <rdfs:comment>represents the real-world competitor that controls a player</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Competitor"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Player"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#trains -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;trains">
+        <rdfs:comment>represents which structure is responsible for training a particular Unit</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Structure"/>
+        <rdfs:range>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;Soldier"/>
+                    <rdf:Description rdf:about="&starcraft_ontology;WorkerUnit"/>
+                </unionOf>
+            </Class>
+        </rdfs:range>
+    </ObjectProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#unlocks -->
+
+    <ObjectProperty rdf:about="&starcraft_ontology;unlocks">
+        <rdfs:comment>represents the Unit that unlocks a given structure</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Structure"/>
+        <rdfs:range rdf:resource="&starcraft_ontology;Unit"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasArmor -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasArmor">
+        <rdfs:comment>Represents the armor level of a unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasAttackDamage -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasAttackDamage">
+        <rdfs:comment>Represents the amount of damage a unit can do in attacking.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasAttackRange -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasAttackRange">
+        <rdfs:comment>Shows the range of attack for a unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasBuildTime -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasBuildTime">
+        <rdfs:comment>Shows how long it takes to produce the unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasElapsedGameTime -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasElapsedGameTime">
+        <rdfs:comment>represents the elapsed game time</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Match"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasEnergy -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasEnergy">
+        <rdfs:comment>Shows the energy level of a unit (if avaliable).</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasGasCost -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasGasCost">
+        <rdfs:comment>Shows how much gas is required to produce a unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasHitPoints -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasHitPoints">
+        <rdfs:comment>Shows the health level for a unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasMaxNumOfPlayers -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasMaxNumOfPlayers">
+        <rdfs:comment>represents the max number of players in a map</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Map"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasMineralCost -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasMineralCost">
+        <rdfs:comment>Shows the cost of minerals required to buld the unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasName -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasName">
+        <rdfs:comment>Name of a map.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:domain>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;Map"/>
+                    <rdf:Description rdf:about="&starcraft_ontology;Region"/>
+                </unionOf>
+            </Class>
+        </rdfs:domain>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasNumberOfPlayers -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasNumberOfPlayers">
+        <rdfs:comment>Total number of players in a match.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:domain>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;Map"/>
+                    <rdf:Description rdf:about="&starcraft_ontology;Match"/>
+                </unionOf>
+            </Class>
+        </rdfs:domain>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasNumberOfRegions -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasNumberOfRegions">
+        <rdfs:comment>Shows the total number of regions in a map.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Map"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasRateOfFire -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasRateOfFire">
+        <rdfs:comment>Shows the rate of fire for a unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasSize -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasSize">
+        <rdfs:comment>Shows the total number of tilesets a unit takes up on a map.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasSpeed -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasSpeed">
+        <rdfs:comment>Shows speed of unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasStartDate -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasStartDate">
+        <rdfs:comment>represents the start date of the match</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasTileSet -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasTileSet">
+        <rdfs:comment>The theme tileset of a map.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Map"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasTravelType -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasTravelType">
+        <rdfs:comment>Represents the way a unit travels.
+</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasWebsite -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasWebsite">
+        <rdfs:comment>represents the website containing information about a match, if available</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#hasWidth -->
+
+    <DatatypeProperty rdf:about="&starcraft_ontology;hasWidth">
+        <rdfs:comment>Used to identfy the size of a chokepoint between regions on a map.</rdfs:comment>
+        <rdfs:domain rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+    <DatatypeProperty rdf:about="&owl;sameAs">
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#AICompetitor -->
+
+    <Class rdf:about="&starcraft_ontology;AICompetitor">
+        <rdfs:label>AI Competitor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Competitor"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Ability -->
+
+    <Class rdf:about="&starcraft_ontology;Ability"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Academy -->
+
+    <Class rdf:about="&starcraft_ontology;Academy">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>An acadmey is used to do research for upgrades.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#AdvancedStructure -->
+
+    <Class rdf:about="&starcraft_ontology;AdvancedStructure">
+        <rdfs:label>Advanced Structure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Structure"/>
+        <rdfs:comment>These structures can be produced after certain basic structures have been built.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Armory"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Factory"/>
+            <rdf:Description rdf:about="&starcraft_ontology;ScienceFacility"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Starport"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Armory -->
+
+    <Class rdf:about="&starcraft_ontology;Armory">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;AdvancedStructure"/>
+        <rdfs:comment>The armory is used to do advanced research.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Barracks -->
+
+    <Class rdf:about="&starcraft_ontology;Barracks">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>A barracks is used to produce soldiers.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#BasicStructure -->
+
+    <Class rdf:about="&starcraft_ontology;BasicStructure">
+        <rdfs:label>Basic Structure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Structure"/>
+        <rdfs:comment>Most basic structures are avaliable to be produced as soon as a game starts.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Battlecruiser -->
+
+    <Class rdf:about="&starcraft_ontology;Battlecruiser">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
+        <rdfs:comment>The battle cruiser is Tarrens most powerful unit and employs the most powerful weapons.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Bunker -->
+
+    <Class rdf:about="&starcraft_ontology;Bunker">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>A bunker is the main defense for a base from ground forces.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Chokepoint -->
+
+    <Class rdf:about="&starcraft_ontology;Chokepoint">
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;Chokepoint"/>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;connectedTo"/>
+                        <onClass rdf:resource="&starcraft_ontology;Region"/>
+                        <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</qualifiedCardinality>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#CommandCenter -->
+
+    <Class rdf:about="&starcraft_ontology;CommandCenter">
+        <rdfs:label>Command Center</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>The command center is the heart of a base and is used to collect resources and build workers.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Competitor -->
+
+    <Class rdf:about="&starcraft_ontology;Competitor"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#ContestedChokepoint -->
+
+    <Class rdf:about="&starcraft_ontology;ContestedChokepoint">
+        <rdfs:label>Contested Chokepoint</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Chokepoint"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#ContestedRegion -->
+
+    <Class rdf:about="&starcraft_ontology;ContestedRegion">
+        <rdfs:label>Contested Region</rdfs:label>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&starcraft_ontology;Region"/>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;containsUnitOf"/>
+                        <onClass rdf:resource="&starcraft_ontology;Player"/>
+                        <minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</minQualifiedCardinality>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Region"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Dropship -->
+
+    <Class rdf:about="&starcraft_ontology;Dropship">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
+        <rdfs:comment>A dropship is used mainly to load and unload ground units to different parts of the map.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#EngineeringBay -->
+
+    <Class rdf:about="&starcraft_ontology;EngineeringBay">
+        <rdfs:label>Engineering Bay</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>The bay can be used to research upgrades to soldiers attack abilities and armor.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Factory -->
+
+    <Class rdf:about="&starcraft_ontology;Factory">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;AdvancedStructure"/>
+        <rdfs:comment>The factory is used to produce ground vehicles.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#FightingUnit -->
+
+    <Class rdf:about="&starcraft_ontology;FightingUnit">
+        <rdfs:label>Fighting Unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:comment>A fighting unit is any unit which is not a structure (ie can move and attack).</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;FlyingVehicle"/>
+            <rdf:Description rdf:about="&starcraft_ontology;GroundVehicle"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Soldier"/>
+            <rdf:Description rdf:about="&starcraft_ontology;WorkerUnit"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#FightingUnitAbility -->
+
+    <Class rdf:about="&starcraft_ontology;FightingUnitAbility">
+        <rdfs:label>Fighting Unit Ability</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Ability"/>
+        <rdfs:comment>This class represents a fighting units ability to be produced</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Firebat -->
+
+    <Class rdf:about="&starcraft_ontology;Firebat">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Soldier"/>
+        <rdfs:comment>A firebat can shot fire and is effective at close range.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#FlyingVehicle -->
+
+    <Class rdf:about="&starcraft_ontology;FlyingVehicle">
+        <rdfs:label>Flying Vehicle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:comment>Flying units are produced exclusively at a starport and can move around only by flying.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Battlecruiser"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Dropship"/>
+            <rdf:Description rdf:about="&starcraft_ontology;ScienceVessel"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Valkyrie"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Wrath"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Ghost -->
+
+    <Class rdf:about="&starcraft_ontology;Ghost">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Soldier"/>
+        <rdfs:comment>The ghost is like a sniper, effective at long range and also has a number of abilities such as turning invinsible. </rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Goliath -->
+
+    <Class rdf:about="&starcraft_ontology;Goliath">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;GroundVehicle"/>
+        <rdfs:comment>This unit is essentialy a walking robot which is effective in attacking flying units and ground units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#GroundVehicle -->
+
+    <Class rdf:about="&starcraft_ontology;GroundVehicle">
+        <rdfs:label>Ground Vehicle</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:comment>Ground units are produced only at a factory.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Goliath"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Tank"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Vulture"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#HumanCompetitor -->
+
+    <Class rdf:about="&starcraft_ontology;HumanCompetitor">
+        <rdfs:label>Human Competitor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Competitor"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#LosingPlayer -->
+
+    <Class rdf:about="&starcraft_ontology;LosingPlayer">
+        <rdfs:label>Losing Player</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Player"/>
+        <disjointWith rdf:resource="&starcraft_ontology;WinningPlayer"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Map -->
+
+    <Class rdf:about="&starcraft_ontology;Map">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Marine -->
+
+    <Class rdf:about="&starcraft_ontology;Marine">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Soldier"/>
+        <rdfs:comment>The marine is the basic soldier but effective at attacking in large groups.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Match -->
+
+    <Class rdf:about="&starcraft_ontology;Match">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Medic -->
+
+    <Class rdf:about="&starcraft_ontology;Medic">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Soldier"/>
+        <rdfs:comment>The medic can cause some damage to enemy units but is moslty good for healing units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#MissleTurret -->
+
+    <Class rdf:about="&starcraft_ontology;MissleTurret">
+        <rdfs:label>Missle Turret</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>Missle turrets are a bases main defense from air units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Player -->
+
+    <Class rdf:about="&starcraft_ontology;Player">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>This class represents a player, whether he&apos;s lossing and winning and all his resources.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Protoss -->
+
+    <Class rdf:about="&starcraft_ontology;Protoss">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Race"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Race -->
+
+    <Class rdf:about="&starcraft_ontology;Race">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>The three races a player can choose from are Protoss, Terran, and Zerg. This ontology focuses only on Terran.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Protoss"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Terran"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Zerg"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Refinery -->
+
+    <Class rdf:about="&starcraft_ontology;Refinery">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>The refinery is used to harvest gas.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Region -->
+
+    <Class rdf:about="&starcraft_ontology;Region">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>A region represents an area on a map which is controlled by a player.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#ScienceFacility -->
+
+    <Class rdf:about="&starcraft_ontology;ScienceFacility">
+        <rdfs:label>Science Facility</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;AdvancedStructure"/>
+        <rdfs:comment>Science facility is used to do advance cabaility research.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#ScienceVessel -->
+
+    <Class rdf:about="&starcraft_ontology;ScienceVessel">
+        <rdfs:label>Science Vessel</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
+        <rdfs:comment>The science vessel has limited attack capability but can be used to apply force shields to other units to protect them.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Soldier -->
+
+    <Class rdf:about="&starcraft_ontology;Soldier">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:comment>Soldiers as the name implies are human units which walk around and are produced only at the barracks.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Firebat"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Ghost"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Marine"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Medic"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Starport -->
+
+    <Class rdf:about="&starcraft_ontology;Starport">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;AdvancedStructure"/>
+        <rdfs:comment>A starport is used to produced flying units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Structure -->
+
+    <Class rdf:about="&starcraft_ontology;Structure">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Unit"/>
+        <rdfs:comment>All structures can be produced by a worker unit only.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Academy"/>
+            <rdf:Description rdf:about="&starcraft_ontology;AdvancedStructure"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Barracks"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Bunker"/>
+            <rdf:Description rdf:about="&starcraft_ontology;CommandCenter"/>
+            <rdf:Description rdf:about="&starcraft_ontology;EngineeringBay"/>
+            <rdf:Description rdf:about="&starcraft_ontology;MissleTurret"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Refinery"/>
+            <rdf:Description rdf:about="&starcraft_ontology;SupplyDepot"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#StructureAbility -->
+
+    <Class rdf:about="&starcraft_ontology;StructureAbility">
+        <rdfs:label>Structure Ability</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Ability"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#SupplyDepot -->
+
+    <Class rdf:about="&starcraft_ontology;SupplyDepot">
+        <rdfs:label>Supply Depot</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;BasicStructure"/>
+        <rdfs:comment>The role of a supply depot is mainly to increase the limit count of population.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Tank -->
+
+    <Class rdf:about="&starcraft_ontology;Tank">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;GroundVehicle"/>
+        <rdfs:comment>The tank is the most powerful ground unit which also has the largest range of attack</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Terran -->
+
+    <Class rdf:about="&starcraft_ontology;Terran">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Race"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Unit -->
+
+    <Class rdf:about="&starcraft_ontology;Unit">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>A unit in the game is either a building a fighting unit.</rdfs:comment>
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;FightingUnit"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Structure"/>
+        </disjointUnionOf>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Valkyrie -->
+
+    <Class rdf:about="&starcraft_ontology;Valkyrie">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
+        <rdfs:comment>The valkyrie ship can not attack ground units but is highly effective in attacking other flying units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Vulture -->
+
+    <Class rdf:about="&starcraft_ontology;Vulture">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;GroundVehicle"/>
+        <rdfs:comment>The vulture has lite armor and attack points but is the fastest unit Tarrens can build.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#WinningPlayer -->
+
+    <Class rdf:about="&starcraft_ontology;WinningPlayer">
+        <rdfs:label>Winning Player</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Player"/>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#WorkerUnit -->
+
+    <Class rdf:about="&starcraft_ontology;WorkerUnit">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FightingUnit"/>
+        <rdfs:comment>Worker units or SCV are used mainly for building structures and harvesting minerals and gas.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Wrath -->
+
+    <Class rdf:about="&starcraft_ontology;Wrath">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
+        <rdfs:comment>The wrath is the main attack flying vehicle for Tarrens and can attak flying and ground units.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Zerg -->
+
+    <Class rdf:about="&starcraft_ontology;Zerg">
+        <rdfs:subClassOf rdf:resource="&starcraft_ontology;Race"/>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="&owl;Thing">
+        <disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Ability"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Chokepoint"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Map"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Match"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Race"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Region"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Unit"/>
+        </disjointUnionOf>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#academy2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;academy2">
+        <rdf:type rdf:resource="&starcraft_ontology;Academy"/>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">0</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">100</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">1000</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">125</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#academyAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;academyAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#armoryAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;armoryAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#barracks2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;barracks2">
+        <rdf:type rdf:resource="&starcraft_ontology;Barracks"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">1</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">1000</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">150</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">5</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#barrcksAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;barrcksAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#battleCruiserAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;battleCruiserAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#bunkerAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;bunkerAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#chokepoint1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;chokepoint1">
+        <rdf:type rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region1"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#chokepoint2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;chokepoint2">
+        <rdf:type rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region1"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#chokepoint3 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;chokepoint3">
+        <rdf:type rdf:resource="&starcraft_ontology;Chokepoint"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region1"/>
+        <starcraft_ontology:connectedTo rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#commandCenterAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;commandCenterAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#commandcenter1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;commandcenter1">
+        <rdf:type rdf:resource="&starcraft_ontology;CommandCenter"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">1</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">10</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">1500</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">400</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region1"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#commandcenter2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;commandcenter2">
+        <rdf:type rdf:resource="&starcraft_ontology;CommandCenter"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">1</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">10</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">1500</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">400</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#dropshipAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;dropshipAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#engineeringbayAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;engineeringbayAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#factory2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;factory2">
+        <rdf:type rdf:resource="&starcraft_ontology;Factory"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#factoryAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;factoryAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#firebat2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;firebat2">
+        <rdf:type rdf:resource="&starcraft_ontology;Firebat"/>
+        <starcraft_ontology:hasEnergy rdf:datatype="&xsd;int">0</starcraft_ontology:hasEnergy>
+        <starcraft_ontology:hasSpeed rdf:datatype="&xsd;int">1</starcraft_ontology:hasSpeed>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">1</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">1</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasRateOfFire rdf:datatype="&xsd;int">1</starcraft_ontology:hasRateOfFire>
+        <starcraft_ontology:hasSize rdf:datatype="&xsd;int">1</starcraft_ontology:hasSize>
+        <starcraft_ontology:hasAttackDamage rdf:datatype="&xsd;int">2</starcraft_ontology:hasAttackDamage>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">25</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">50</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasAttackRange rdf:datatype="&xsd;int">7</starcraft_ontology:hasAttackRange>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#firebatAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;firebatAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#flash -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;flash">
+        <rdf:type rdf:resource="&starcraft_ontology;HumanCompetitor"/>
+        <sameAs rdf:datatype="&xsd;anyURI">http://www.freebase.com/m/07k4xm8</sameAs>
+        <starcraft_ontology:playedAs rdf:resource="&starcraft_ontology;player2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#ghostAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;ghostAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#goliathAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;goliathAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#map001 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;map001">
+        <rdf:type rdf:resource="&starcraft_ontology;Map"/>
+        <starcraft_ontology:hasNumberOfRegions rdf:datatype="&xsd;int">2</starcraft_ontology:hasNumberOfRegions>
+        <starcraft_ontology:hasNumberOfPlayers rdf:datatype="&xsd;int">2</starcraft_ontology:hasNumberOfPlayers>
+        <starcraft_ontology:hasTileSet rdf:datatype="&xsd;string">Dessert</starcraft_ontology:hasTileSet>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#marine2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;marine2">
+        <rdf:type rdf:resource="&starcraft_ontology;Marine"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasEnergy rdf:datatype="&xsd;int">0</starcraft_ontology:hasEnergy>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">0</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">1</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasAttackDamage rdf:datatype="&xsd;int">6</starcraft_ontology:hasAttackDamage>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">60</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasAttackRange rdf:datatype="&xsd;int">7</starcraft_ontology:hasAttackRange>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#marineAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;marineAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#match1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;match1">
+        <rdf:type rdf:resource="&starcraft_ontology;Match"/>
+        <starcraft_ontology:hasStartDate rdf:datatype="&xsd;dateTime">2009-06-30</starcraft_ontology:hasStartDate>
+        <starcraft_ontology:hasElapsedGameTime rdf:datatype="&xsd;dateTime">2009-06-30T00:01:53</starcraft_ontology:hasElapsedGameTime>
+        <starcraft_ontology:hasWebsite rdf:datatype="&xsd;anyURI">http://www.teamliquid.net/tlpd/korean/games/14286_firebathero_vs_Flash</starcraft_ontology:hasWebsite>
+        <rdfs:comment>This is the current match, between players 1 and 2 on map001.</rdfs:comment>
+        <starcraft_ontology:hasMap rdf:resource="&starcraft_ontology;map001"/>
+        <starcraft_ontology:hasPlayer rdf:resource="&starcraft_ontology;player1"/>
+        <starcraft_ontology:hasPlayer rdf:resource="&starcraft_ontology;player2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#medicAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;medicAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#missleturretAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;missleturretAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#player1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;player1">
+        <rdf:type rdf:resource="&starcraft_ontology;Player"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;commandcenter1"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;workerUnit1"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#player2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;player2">
+        <rdf:type rdf:resource="&starcraft_ontology;Player"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;academy2"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;barracks2"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;commandcenter2"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;factory2"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;firebat2"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;marine2"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;refinery2"/>
+        <starcraft_ontology:hasStructure rdf:resource="&starcraft_ontology;supplydepot2"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;workerUnit2"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;workerUnit2.1"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;workerUnit2.3"/>
+        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;workerUnit2.4"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#refinery2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;refinery2">
+        <rdf:type rdf:resource="&starcraft_ontology;Refinery"/>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">0</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">10</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">100</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">100</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#refineryAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;refineryAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#region1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;region1">
+        <rdf:type rdf:resource="&starcraft_ontology;Region"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#region2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;region2">
+        <rdf:type rdf:resource="&starcraft_ontology;Region"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#scienceVesselAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;scienceVesselAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#sciencefaciliyAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;sciencefaciliyAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#starportAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;starportAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#supplydepot2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;supplydepot2">
+        <rdf:type rdf:resource="&starcraft_ontology;SupplyDepot"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">1</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">100</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">5</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">500</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#supplydepotAvaliable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;supplydepotAvaliable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#tankAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;tankAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#valkyrieAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;valkyrieAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#vultureAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;vultureAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerUnit1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerUnit1">
+        <rdf:type rdf:resource="&starcraft_ontology;WorkerUnit"/>
+        <starcraft_ontology:hasEnergy rdf:datatype="&xsd;int">0</starcraft_ontology:hasEnergy>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">0</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasAttackRange rdf:datatype="&xsd;int">5</starcraft_ontology:hasAttackRange>
+        <starcraft_ontology:hasAttackDamage rdf:datatype="&xsd;int">5</starcraft_ontology:hasAttackDamage>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">50</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">50</starcraft_ontology:hasMineralCost>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerUnit2 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerUnit2">
+        <rdf:type rdf:resource="&starcraft_ontology;WorkerUnit"/>
+        <starcraft_ontology:hasGasCost rdf:datatype="&xsd;int">0</starcraft_ontology:hasGasCost>
+        <starcraft_ontology:hasArmor rdf:datatype="&xsd;int">0</starcraft_ontology:hasArmor>
+        <starcraft_ontology:hasEnergy rdf:datatype="&xsd;int">0</starcraft_ontology:hasEnergy>
+        <starcraft_ontology:hasSize rdf:datatype="&xsd;int">1</starcraft_ontology:hasSize>
+        <starcraft_ontology:hasAttackRange rdf:datatype="&xsd;int">1</starcraft_ontology:hasAttackRange>
+        <starcraft_ontology:hasSpeed rdf:datatype="&xsd;int">2</starcraft_ontology:hasSpeed>
+        <starcraft_ontology:hasBuildTime rdf:datatype="&xsd;int">20</starcraft_ontology:hasBuildTime>
+        <starcraft_ontology:hasAttackDamage rdf:datatype="&xsd;int">5</starcraft_ontology:hasAttackDamage>
+        <starcraft_ontology:hasMineralCost rdf:datatype="&xsd;int">50</starcraft_ontology:hasMineralCost>
+        <starcraft_ontology:hasHitPoints rdf:datatype="&xsd;int">60</starcraft_ontology:hasHitPoints>
+        <starcraft_ontology:isInRegion rdf:resource="&starcraft_ontology;region2"/>
+        <sameAs rdf:resource="&starcraft_ontology;workerUnit2.1"/>
+        <sameAs rdf:resource="&starcraft_ontology;workerUnit2.3"/>
+        <sameAs rdf:resource="&starcraft_ontology;workerUnit2.4"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerUnit2.1 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerUnit2.1">
+        <rdf:type rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerUnit2.3 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerUnit2.3">
+        <rdf:type rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerUnit2.4 -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;workerUnit2.4">
+        <rdf:type rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#wraithAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;wraithAvailable"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;marineAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;goliathAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Armory"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint3"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;missleturretAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;bunkerAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;ghostAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;starportAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;engineeringbayAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;dropshipAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
+    </Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;commandcenter1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;commandcenter2"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;medicAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Academy"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;sciencefaciliyAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;refineryAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;tankAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;commandCenterAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;academyAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hadStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;battleCruiserAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;region1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;region2"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;bunkerAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;supplydepotAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;armoryAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;workerUnit1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;workerUnit2"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint2"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;firebatAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Academy"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;factoryAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;player1"/>
+            <rdf:Description rdf:about="&starcraft_ontology;player2"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;wraithAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
+    </Restriction>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint2"/>
+            <rdf:Description rdf:about="&starcraft_ontology;chokepoint3"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;vultureAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;barrcksAvaliable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;WorkerUnit"/>
+    </Restriction>
+</rdf:RDF>
 
 
 

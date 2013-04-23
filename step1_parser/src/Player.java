@@ -23,4 +23,9 @@ public class Player{
 	public ArrayList<Unit> getUnits(){
 		return units;
 	}
+	
+	public String toString(){
+		String s = "["+playerId+", Units: "+units+"]";
+		return s;
+	}
 }

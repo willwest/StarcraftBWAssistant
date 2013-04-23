@@ -8,16 +8,19 @@ public class BWAPIParser{
 		String inputFile = args[0];
 		try{
 			InputStream in = new FileInputStream(inputFile);
-			readJsonStream(in);
+			GameState gameState = readJsonStream(in);
+			JenaInterface jena = new JenaInterface("starcraft_ontology.owl");
+			System.out.println(gameState);
 		}catch(Exception e){
 			System.out.println("Error: "+e);
 		}
 	}
 	
-	public static void readJsonStream(InputStream in) throws IOException{
+	public static GameState readJsonStream(InputStream in) throws IOException{
+		GameState g = new GameState();
 		JsonReader reader = new JsonReader(new InputStreamReader(in));
 		try{
-			readPlayerObject(reader);
+			g = readGameState(reader);
 		}
 		catch(Exception e){
 			System.out.println("Error: "+e);
@@ -25,29 +28,94 @@ public class BWAPIParser{
 		finally{
 			reader.close();
 		}
+		return g;
 	}
 	
-	public static void readPlayerObject(JsonReader reader) throws IOException{
-		int playerId = -1;
+	public static GameState readGameState(JsonReader reader) throws IOException{
+		GameState gameState = new GameState();
 		reader.beginObject();
-		List<Unit> units = null;
 		while(reader.hasNext()){
 			String name = reader.nextName();
-			if(name.equals("playerId")){
-				playerId = reader.nextInt();
+			if(name.equals("players")){
+				gameState.setPlayers(readPlayersArray(reader));
 			}
-			else if(name.equals("units")){
-				units = readUnitsArray(reader);
+			else if(name.equals("regions")){
+				gameState.setRegions(readRegionsArray(reader));
 			}
 			else{
 				reader.skipValue();
 			}
 		}
-		System.out.println(units);
+		reader.endObject();
+		return gameState;
 	}
 	
-	public static List<Unit> readUnitsArray(JsonReader reader) throws IOException{
-		List<Unit> units = new ArrayList<Unit>();
+	public static ArrayList<Player> readPlayersArray(JsonReader reader) throws IOException{
+		ArrayList<Player> players = new ArrayList<Player>();
+		reader.beginArray();
+		while(reader.hasNext()){
+			players.add(readPlayerObject(reader));
+		}
+		reader.endArray();
+		return players;
+	}
+	
+	public static ArrayList<Region> readRegionsArray(JsonReader reader) throws IOException{
+		ArrayList<Region> regions = new ArrayList<Region>();
+		reader.beginArray();
+		while(reader.hasNext()){
+			regions.add(readRegionObject(reader));
+		}
+		reader.endArray();
+		return regions;
+	}
+	
+	public static Region readRegionObject(JsonReader reader) throws IOException{
+		Region region = new Region();
+		reader.beginObject();
+
+		while(reader.hasNext()){
+			String name = reader.nextName();
+			if(name.equals("regionCenterX")){
+				region.setRegionCenterX(reader.nextInt());
+			}
+			else if(name.equals("regionCenterY")){
+				region.setRegionCenterY(reader.nextInt());
+			}
+			else if(name.equals("regionID")){
+				region.setRegionId(reader.nextInt());
+			}
+			else{
+				reader.skipValue();
+			}
+		}
+		reader.endObject();
+		return region;
+	}
+	
+	public static Player readPlayerObject(JsonReader reader) throws IOException{
+		Player player = new Player();
+		reader.beginObject();
+		
+		ArrayList<Unit> units = null;
+		while(reader.hasNext()){
+			String name = reader.nextName();
+			if(name.equals("playerId")){
+				player.setPlayerId(reader.nextInt());
+			}
+			else if(name.equals("units")){
+				player.setUnits(readUnitsArray(reader));
+			}
+			else{
+				reader.skipValue();
+			}
+		}
+		reader.endObject();
+		return player;
+	}
+	
+	public static ArrayList<Unit> readUnitsArray(JsonReader reader) throws IOException{
+		ArrayList<Unit> units = new ArrayList<Unit>();
 		
 		reader.beginArray();
 		while(reader.hasNext()){

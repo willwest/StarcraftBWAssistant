@@ -52,7 +52,7 @@ public class Unit{
 	}
 	
 	public String toString(){
-		String s = unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost;
+		String s = "["+unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
 		return s;
 	}
 }
