@@ -9,8 +9,20 @@ public class BWAPIParser{
 		try{
 			InputStream in = new FileInputStream(inputFile);
 			GameState gameState = readJsonStream(in);
-			JenaInterface jena = new JenaInterface("starcraft_ontology.owl");
+			JenaInterface jena = new JenaInterface("starcraft_ontology_no_individuals.owl");
+			jena.loadGameState(gameState);
+			jena.reasonOverModel();
 			System.out.println(gameState);
+			String queryString = "PREFIX sc:<"+jena.getNS()+">" +
+			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
+			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
+			"SELECT ?s ?p ?o " +
+			"WHERE {"+
+			"?s rdf:type sc:Player ."+
+			"?s ?p ?o ."+
+			"}";
+			jena.queryModel(queryString);
+			
 		}catch(Exception e){
 			System.out.println("Error: "+e);
 		}

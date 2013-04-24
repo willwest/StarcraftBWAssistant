@@ -51,6 +51,10 @@ public class Unit{
 		gasCost = gCost;
 	}
 	
+	public int getUnitId(){
+		return unitId;
+	}
+	
 	public String toString(){
 		String s = "["+unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
 		return s;
