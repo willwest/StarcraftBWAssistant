@@ -46,7 +46,7 @@ public class JenaInterface{
 	public void loadGameState(GameState gameState){
 		loadRegionList(gameState.getRegions());
 		loadPlayersList(gameState.getPlayers());
-		
+		loadChokepointsList(gameState.getChokepoints());
 	}
 	
 	private void loadRegionList(ArrayList<Region> regions){	
@@ -58,6 +58,12 @@ public class JenaInterface{
 	private void loadPlayersList(ArrayList<Player> players){
 		for(Player p : players){
 			loadPlayer(p);
+		}
+	}
+	
+	private void loadChokepointsList(ArrayList<Chokepoint> chokepoints){
+		for(Chokepoint c : chokepoints){
+			loadChokepoint(c);
 		}
 	}
 	
@@ -74,41 +80,126 @@ public class JenaInterface{
 		Literal regionIdValue = l(regionId);
 		Literal centerXValue = l(regionCenterX);
 		Literal centerYValue = l(regionCenterY);
-		
-		//System.out.println("Loading "+regionIndividual+" of class type="+regionClass+" into ontology.");
-		
+
 		currentModel.createIndividual(NS+"region"+regionId, regionClass);
 		currentModel.addLiteral(regionIndividual, regionIdProperty, regionIdValue);
 		currentModel.addLiteral(regionIndividual, hasCenterXProperty, centerXValue);
 		currentModel.addLiteral(regionIndividual, hasCenterYProperty, centerYValue);
 	}
 	
+	private void loadChokepoint(Chokepoint chokepoint){
+		int chokepointId = chokepoint.getChokepointId();
+		int chokepointCenterX = chokepoint.getChokepointCenterX();
+		int chokepointCenterY = chokepoint.getChokepointCenterY();
+		int connectedToRegionOneId = chokepoint.getConnectedToRegionOneId();
+		int connectedToRegionTwoId = chokepoint.getConnectedToRegionTwoId();
+		
+		Resource chokepointClass = r("Chokepoint");
+		Resource chokepointIndividual = r("chokepoint"+chokepointId);
+		Property chokepointIdProperty = p("hasChokepointId");
+		Property chokepointCenterXProperty = p("hasChokepointCenterX");
+		Property chokepointCenterYProperty = p("hasChokepointCenterY");
+		Property connectedToRegionOneIdProperty = p("isConnectedToRegionOneId");
+		Property connectedToRegionTwoIdProperty = p("isConnectedToRegionTwoId");
+		
+		Literal chokepointIdValue = l(chokepointId);
+		Literal chokepointCenterXValue = l(chokepointCenterX);
+		Literal chokepointCenterYValue = l(chokepointCenterY);
+		Literal connectedToRegionOneIdValue = l(connectedToRegionOneId);
+		Literal connectedToRegionTwoIdValue = l(connectedToRegionTwoId);
+		
+		currentModel.createIndividual(NS+"chokepoint"+chokepointId, chokepointClass);
+		currentModel.addLiteral(chokepointIndividual, chokepointIdProperty, chokepointIdValue);
+		currentModel.addLiteral(chokepointIndividual, chokepointCenterXProperty, chokepointCenterXValue);
+		currentModel.addLiteral(chokepointIndividual, chokepointCenterYProperty, chokepointCenterYValue);
+		currentModel.addLiteral(chokepointIndividual, connectedToRegionOneIdProperty, connectedToRegionOneIdValue);
+		currentModel.addLiteral(chokepointIndividual, connectedToRegionTwoIdProperty, connectedToRegionTwoIdValue);
+	}
+	
 	private void loadPlayer(Player player){
 		int playerId = player.getPlayerId();
 		
-		loadUnitsList(player.getUnits());
+		loadUnitsList(player.getMyUnits());
+		loadUnitsList(player.getEnemyUnits());
 		
 		Resource playerClass = r("Player");
 		Resource playerIndividual = r("player"+playerId);
 		Property playerIdProperty = p("hasPlayerId");
 		Property hasUnitProperty = p("hasUnit");
+		Property hasEnemyUnitProperty = p("hasEnemyUnit");
 		Literal playerIdValue = l(playerId);
 		
 		currentModel.createIndividual(NS+"player"+playerId, playerClass);
 		currentModel.addLiteral(playerIndividual, playerIdProperty, playerIdValue);
 		
-		for(Unit u : player.getUnits()){
+		for(Unit u : player.getMyUnits()){
 			Resource unitIndividual = r("unit"+u.getUnitId());
 			currentModel.add(playerIndividual, hasUnitProperty, unitIndividual);
+		}
+		
+		for(Unit u : player.getEnemyUnits()){
+			Resource unitIndividual = r("unit"+u.getUnitId());
+			currentModel.add(playerIndividual, hasEnemyUnitProperty, unitIndividual);
 		}
 	}
 	
 	private void loadUnitsList(ArrayList<Unit> units){
-	
+		for(Unit u : units){
+			loadUnit(u);
+		}
 	}
 	
 	private void loadUnit(Unit unit){
-	
+		int unitId = unit.getUnitId();
+		int unitTypeId = unit.getUnitTypeId();
+		int currentHitPoints = unit.getCurrentHitPoints();
+		int maxHitPoints = unit.getMaxHitPoints();
+		int xCoord = unit.getXCoord();
+		int yCoord = unit.getYCoord();
+		int regionId = unit.getRegionId();
+		int armor = unit.getArmor();
+		int mineralCost = unit.getMineralCost();
+		int gasCost = unit.getGasCost();
+		
+		Literal unitIdValue = l(unitId);
+		Literal unitTypeIdValue = l(unitTypeId);
+		Literal currentHitPointsValue = l(currentHitPoints);
+		Literal maxHitPointsValue = l(maxHitPoints);
+		Literal xCoordValue = l(xCoord);
+		Literal yCoordValue = l(yCoord);
+		Literal regionIdValue = l(regionId);
+		Literal armorValue = l(armor);
+		Literal mineralCostValue = l(mineralCost);
+		Literal gasCostValue = l(gasCost);
+		
+		Resource unitClass = r("Unit");
+		Resource unitIndividual = r("unit"+unitId);
+		
+		Property unitIdProperty = p("hasUnitIdProperty");
+		Property unitTypeIdProperty = p("hasUnitTypeId");
+		Property currentHitPointsProperty = p("hasCurrentHitPoints");
+		Property maxHitPointsProperty = p("hasMaxHitPoints");
+		Property xCoordProperty = p("hasXCoord");
+		Property yCoordProperty = p("hasYCoord");
+		//Bug[WW]: this should be changed to not conflict with the property of the same name in the Region class
+		Property regionIdProperty = p("hasRegionId"); 
+		//END NOTE
+		Property armorProperty = p("hasArmor");
+		Property mineralCostProperty = p("hasMineralCost");
+		Property gasCostProperty = p("hasGasCost");
+		
+		currentModel.createIndividual(NS+"unit"+unitId, unitClass);
+		
+		currentModel.addLiteral(unitIndividual, unitIdProperty, unitIdValue);
+		currentModel.addLiteral(unitIndividual, unitTypeIdProperty, unitTypeIdValue);
+		currentModel.addLiteral(unitIndividual, currentHitPointsProperty, currentHitPointsValue);
+		currentModel.addLiteral(unitIndividual, maxHitPointsProperty, maxHitPointsValue);
+		currentModel.addLiteral(unitIndividual, xCoordProperty, xCoordValue);
+		currentModel.addLiteral(unitIndividual, yCoordProperty, yCoordValue);
+		currentModel.addLiteral(unitIndividual, regionIdProperty, regionIdValue);
+		currentModel.addLiteral(unitIndividual, armorProperty, armorValue);
+		currentModel.addLiteral(unitIndividual, mineralCostProperty, mineralCostValue);
+		currentModel.addLiteral(unitIndividual, gasCostProperty, gasCostValue);	
 	}
 	
 	public void queryModel(String queryString){

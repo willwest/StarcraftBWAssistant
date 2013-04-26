@@ -4,6 +4,7 @@ import java.util.*;
 public class GameState{
 	private ArrayList<Player> players = null;
 	private ArrayList<Region> regions = null;
+	private ArrayList<Chokepoint> chokepoints = null;
 	
 	public void GameState(){
 	}
@@ -16,12 +17,20 @@ public class GameState{
 		regions = r;
 	}
 	
+	public void setChokepoints(ArrayList<Chokepoint> c){
+		chokepoints = c;
+	}
+	
 	public ArrayList<Player> getPlayers(){
 		return players;
 	}
 	
 	public ArrayList<Region> getRegions(){
 		return regions;
+	}
+	
+	public ArrayList<Chokepoint> getChokepoints(){
+		return chokepoints;
 	}
 	
 	public String toString(){

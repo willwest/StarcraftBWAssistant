@@ -54,6 +54,9 @@ public class BWAPIParser{
 			else if(name.equals("regions")){
 				gameState.setRegions(readRegionsArray(reader));
 			}
+			else if(name.equals("chokepoints")){
+				gameState.setChokepoints(readChokepointsArray(reader));
+			}
 			else{
 				reader.skipValue();
 			}
@@ -82,6 +85,16 @@ public class BWAPIParser{
 		return regions;
 	}
 	
+	public static ArrayList<Chokepoint> readChokepointsArray(JsonReader reader) throws IOException{
+		ArrayList<Chokepoint> chokepoints = new ArrayList<Chokepoint>();
+		reader.beginArray();
+		while(reader.hasNext()){
+			chokepoints.add(readChokepointObject(reader));
+		}
+		reader.endArray();
+		return chokepoints;
+	}
+	
 	public static Region readRegionObject(JsonReader reader) throws IOException{
 		Region region = new Region();
 		reader.beginObject();
@@ -105,6 +118,36 @@ public class BWAPIParser{
 		return region;
 	}
 	
+	//{"chokepointID":"0","chokepointCenterX":"2460","chokepointCenterY":"676","connectedToRegionOneID":"9","connectedToRegionTwoID":"14"}
+	public static Chokepoint readChokepointObject(JsonReader reader) throws IOException{
+		Chokepoint chokepoint = new Chokepoint();
+		reader.beginObject();
+
+		while(reader.hasNext()){
+			String name = reader.nextName();
+			if(name.equals("chokepointID")){
+				chokepoint.setChokepointId(reader.nextInt());
+			}
+			else if(name.equals("chokepointCenterX")){
+				chokepoint.setChokepointCenterX(reader.nextInt());
+			}
+			else if(name.equals("chokepointCenterY")){
+				chokepoint.setChokepointCenterY(reader.nextInt());
+			}
+			else if(name.equals("connectedToRegionOneID")){
+				chokepoint.setConnectedToRegionOneId(reader.nextInt());
+			}
+			else if(name.equals("connectedToRegionTwoID")){
+				chokepoint.setConnectedToRegionTwoId(reader.nextInt());
+			}
+			else{
+				reader.skipValue();
+			}
+		}
+		reader.endObject();
+		return chokepoint;
+	}
+	
 	public static Player readPlayerObject(JsonReader reader) throws IOException{
 		Player player = new Player();
 		reader.beginObject();
@@ -115,8 +158,11 @@ public class BWAPIParser{
 			if(name.equals("playerId")){
 				player.setPlayerId(reader.nextInt());
 			}
-			else if(name.equals("units")){
-				player.setUnits(readUnitsArray(reader));
+			else if(name.equals("myUnits")){
+				player.setMyUnits(readUnitsArray(reader));
+			}
+			else if(name.equals("enemyUnits")){
+				player.setEnemyUnits(readUnitsArray(reader));
 			}
 			else{
 				reader.skipValue();
@@ -146,11 +192,14 @@ public class BWAPIParser{
 			if(name.equals("unitID")){
 				unit.setUnitId(reader.nextInt());
 			}
-			else if(name.equals("unitType")){
-				unit.setUnitType(reader.nextString());
+			else if(name.equals("unitTypeID")){
+				unit.setUnitTypeId(reader.nextInt());
 			}
 			else if(name.equals("currentHitPoints")){
 				unit.setCurrentHitPoints(reader.nextInt());
+			}
+			else if(name.equals("maxHitPoints")){
+				unit.setMaxHitPoints(reader.nextInt());
 			}
 			else if(name.equals("x")){
 				unit.setXCoord(reader.nextInt());

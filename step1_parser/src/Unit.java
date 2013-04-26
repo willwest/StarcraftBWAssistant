@@ -3,8 +3,9 @@ import java.util.*;
 
 public class Unit{
 	private int unitId = -1;
-	private String unitType = null;
+	private int unitTypeId = -1;
 	private int currentHitPoints = -1;
+	private int maxHitPoints = -1;
 	private int xCoord = -1;
 	private int yCoord = -1;
 	private int regionId = -1;
@@ -19,12 +20,16 @@ public class Unit{
 		unitId = id;
 	}
 	
-	public void setUnitType(String type){
-		unitType = type;
+	public void setUnitTypeId(int type){
+		unitTypeId = type;
 	}
 	
 	public void setCurrentHitPoints(int currHP){
 		currentHitPoints = currHP;
+	}
+	
+	public void setMaxHitPoints(int maxHP){
+		maxHitPoints = maxHP;
 	}
 	
 	public void setXCoord(int x){
@@ -55,8 +60,44 @@ public class Unit{
 		return unitId;
 	}
 	
+	public int getUnitTypeId(){
+		return unitTypeId;
+	}
+	
+	public int getCurrentHitPoints(){
+		return currentHitPoints;
+	}
+	
+	public int getMaxHitPoints(){
+		return maxHitPoints;
+	}
+	
+	public int getXCoord(){
+		return xCoord;
+	}
+	
+	public int getYCoord(){
+		return yCoord;
+	}
+	
+	public int getRegionId(){
+		return regionId;
+	}
+	
+	public int getArmor(){
+		return armor;
+	}
+	
+	public int getMineralCost(){
+		return mineralCost;
+	}
+	
+	public int getGasCost(){
+		return gasCost;
+	}
+	
 	public String toString(){
-		String s = "["+unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
+		String s = "["+unitId+", "+unitTypeId+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
 		return s;
 	}
 }
