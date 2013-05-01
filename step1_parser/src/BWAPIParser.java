@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// Name: William West                                                                  //
+// Filename: BWAPIParser.java                                                          //
+// Class: CSE428 - Semantic Web                                                        //
+// Assignment: Final Project                                                           //
+// Description:                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////
+
 import com.google.gson.stream.JsonReader;
 import java.util.*;
 import java.lang.*;
@@ -9,7 +17,7 @@ public class BWAPIParser{
 		try{
 			InputStream in = new FileInputStream(inputFile);
 			GameState gameState = readJsonStream(in);
-			JenaInterface jena = new JenaInterface("starcraft_ontology_no_individuals.owl");
+			JenaInterface jena = new JenaInterface("base_ontology.owl");
 			jena.loadGameState(gameState);
 			jena.reasonOverModel();
 			System.out.println(gameState);
@@ -22,6 +30,7 @@ public class BWAPIParser{
 			"?s ?p ?o ."+
 			"}";
 			jena.queryModel(queryString);
+			jena.outputToFile();
 			
 		}catch(Exception e){
 			System.out.println("Error: "+e);
@@ -135,10 +144,10 @@ public class BWAPIParser{
 				chokepoint.setChokepointCenterY(reader.nextInt());
 			}
 			else if(name.equals("connectedToRegionOneID")){
-				chokepoint.setConnectedToRegionOneId(reader.nextInt());
+				chokepoint.setConnectedToRegionOne(reader.nextInt());
 			}
 			else if(name.equals("connectedToRegionTwoID")){
-				chokepoint.setConnectedToRegionTwoId(reader.nextInt());
+				chokepoint.setConnectedToRegionTwo(reader.nextInt());
 			}
 			else{
 				reader.skipValue();
@@ -192,14 +201,21 @@ public class BWAPIParser{
 			if(name.equals("unitID")){
 				unit.setUnitId(reader.nextInt());
 			}
-			else if(name.equals("unitTypeID")){
-				unit.setUnitTypeId(reader.nextInt());
+			else if(name.equals("unitType")){
+				unit.setUnitType(reader.nextString());
 			}
 			else if(name.equals("currentHitPoints")){
 				unit.setCurrentHitPoints(reader.nextInt());
 			}
 			else if(name.equals("maxHitPoints")){
 				unit.setMaxHitPoints(reader.nextInt());
+			}
+			else if(name.equals("isBeingAttacked")){
+				int b =reader.nextInt();
+				boolean isBeingAttacked = false;
+				if(b==1)
+					isBeingAttacked = true;
+				unit.setIsBeingAttacked(isBeingAttacked);
 			}
 			else if(name.equals("x")){
 				unit.setXCoord(reader.nextInt());

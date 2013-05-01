@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// Name: William West                                                                  //
+// Filename: GameState.java                                                            //
+// Class: CSE428 - Semantic Web                                                        //
+// Assignment: Final Project                                                           //
+// Description:                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////
+
 import java.lang.*;
 import java.util.*;
 

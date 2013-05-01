@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// Name: William West                                                                  //
+// Filename: JenaInterface.java                                                        //
+// Class: CSE428 - Semantic Web                                                        //
+// Assignment: Final Project                                                           //
+// Description:                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////
+
 import java.io.*;
 import java.util.*;
 
@@ -67,55 +75,6 @@ public class JenaInterface{
 		}
 	}
 	
-	private void loadRegion(Region region){
-		int regionId = region.getRegionId();
-		int regionCenterX = region.getRegionCenterX();
-		int regionCenterY = region.getRegionCenterY();
-
-		Resource regionClass = r("Region");
-		Resource regionIndividual = r("region"+regionId);
-		Property regionIdProperty = p("hasRegionId");
-		Property hasCenterXProperty = p("hasCenterX");
-		Property hasCenterYProperty = p("hasCenterY");
-		Literal regionIdValue = l(regionId);
-		Literal centerXValue = l(regionCenterX);
-		Literal centerYValue = l(regionCenterY);
-
-		currentModel.createIndividual(NS+"region"+regionId, regionClass);
-		currentModel.addLiteral(regionIndividual, regionIdProperty, regionIdValue);
-		currentModel.addLiteral(regionIndividual, hasCenterXProperty, centerXValue);
-		currentModel.addLiteral(regionIndividual, hasCenterYProperty, centerYValue);
-	}
-	
-	private void loadChokepoint(Chokepoint chokepoint){
-		int chokepointId = chokepoint.getChokepointId();
-		int chokepointCenterX = chokepoint.getChokepointCenterX();
-		int chokepointCenterY = chokepoint.getChokepointCenterY();
-		int connectedToRegionOneId = chokepoint.getConnectedToRegionOneId();
-		int connectedToRegionTwoId = chokepoint.getConnectedToRegionTwoId();
-		
-		Resource chokepointClass = r("Chokepoint");
-		Resource chokepointIndividual = r("chokepoint"+chokepointId);
-		Property chokepointIdProperty = p("hasChokepointId");
-		Property chokepointCenterXProperty = p("hasChokepointCenterX");
-		Property chokepointCenterYProperty = p("hasChokepointCenterY");
-		Property connectedToRegionOneIdProperty = p("isConnectedToRegionOneId");
-		Property connectedToRegionTwoIdProperty = p("isConnectedToRegionTwoId");
-		
-		Literal chokepointIdValue = l(chokepointId);
-		Literal chokepointCenterXValue = l(chokepointCenterX);
-		Literal chokepointCenterYValue = l(chokepointCenterY);
-		Literal connectedToRegionOneIdValue = l(connectedToRegionOneId);
-		Literal connectedToRegionTwoIdValue = l(connectedToRegionTwoId);
-		
-		currentModel.createIndividual(NS+"chokepoint"+chokepointId, chokepointClass);
-		currentModel.addLiteral(chokepointIndividual, chokepointIdProperty, chokepointIdValue);
-		currentModel.addLiteral(chokepointIndividual, chokepointCenterXProperty, chokepointCenterXValue);
-		currentModel.addLiteral(chokepointIndividual, chokepointCenterYProperty, chokepointCenterYValue);
-		currentModel.addLiteral(chokepointIndividual, connectedToRegionOneIdProperty, connectedToRegionOneIdValue);
-		currentModel.addLiteral(chokepointIndividual, connectedToRegionTwoIdProperty, connectedToRegionTwoIdValue);
-	}
-	
 	private void loadPlayer(Player player){
 		int playerId = player.getPlayerId();
 		
@@ -143,6 +102,55 @@ public class JenaInterface{
 		}
 	}
 	
+	private void loadRegion(Region region){
+		int regionId = region.getRegionId();
+		int regionCenterX = region.getRegionCenterX();
+		int regionCenterY = region.getRegionCenterY();
+
+		Resource regionClass = r("Region");
+		Resource regionIndividual = r("region"+regionId);
+		Property regionIdProperty = p("hasRegionId");
+		Property hasCenterXProperty = p("hasCenterX");
+		Property hasCenterYProperty = p("hasCenterY");
+		Literal regionIdValue = l(regionId);
+		Literal centerXValue = l(regionCenterX);
+		Literal centerYValue = l(regionCenterY);
+
+		currentModel.createIndividual(NS+"region"+regionId, regionClass);
+		currentModel.addLiteral(regionIndividual, regionIdProperty, regionIdValue);
+		currentModel.addLiteral(regionIndividual, hasCenterXProperty, centerXValue);
+		currentModel.addLiteral(regionIndividual, hasCenterYProperty, centerYValue);
+	}
+	
+	private void loadChokepoint(Chokepoint chokepoint){
+		int chokepointId = chokepoint.getChokepointId();
+		int chokepointCenterX = chokepoint.getChokepointCenterX();
+		int chokepointCenterY = chokepoint.getChokepointCenterY();
+		int connectedToRegionOne = chokepoint.getConnectedToRegionOne();
+		int connectedToRegionTwo = chokepoint.getConnectedToRegionTwo();
+		
+		Resource chokepointClass = r("Chokepoint");
+		Resource chokepointIndividual = r("chokepoint"+chokepointId);
+		Property chokepointIdProperty = p("hasChokepointId");
+		Property chokepointCenterXProperty = p("hasChokepointCenterX");
+		Property chokepointCenterYProperty = p("hasChokepointCenterY");
+		Property connectedToRegionOneProperty = p("isConnectedToRegionOne");
+		Property connectedToRegionTwoProperty = p("isConnectedToRegionTwo");
+		
+		Resource connectedToRegionOneValue = r("region"+connectedToRegionOne);
+		Resource connectedToRegionTwoValue = r("region"+connectedToRegionTwo);
+		Literal chokepointIdValue = l(chokepointId);
+		Literal chokepointCenterXValue = l(chokepointCenterX);
+		Literal chokepointCenterYValue = l(chokepointCenterY);
+		
+		currentModel.createIndividual(NS+"chokepoint"+chokepointId, chokepointClass);
+		currentModel.addLiteral(chokepointIndividual, chokepointIdProperty, chokepointIdValue);
+		currentModel.addLiteral(chokepointIndividual, chokepointCenterXProperty, chokepointCenterXValue);
+		currentModel.addLiteral(chokepointIndividual, chokepointCenterYProperty, chokepointCenterYValue);
+		currentModel.add(chokepointIndividual, connectedToRegionOneProperty, connectedToRegionOneValue);
+		currentModel.add(chokepointIndividual, connectedToRegionTwoProperty, connectedToRegionTwoValue);
+	}
+	
 	private void loadUnitsList(ArrayList<Unit> units){
 		for(Unit u : units){
 			loadUnit(u);
@@ -151,9 +159,10 @@ public class JenaInterface{
 	
 	private void loadUnit(Unit unit){
 		int unitId = unit.getUnitId();
-		int unitTypeId = unit.getUnitTypeId();
+		String unitType = unit.getUnitType();
 		int currentHitPoints = unit.getCurrentHitPoints();
 		int maxHitPoints = unit.getMaxHitPoints();
+		boolean isBeingAttacked = unit.getIsBeingAttacked();
 		int xCoord = unit.getXCoord();
 		int yCoord = unit.getYCoord();
 		int regionId = unit.getRegionId();
@@ -161,10 +170,17 @@ public class JenaInterface{
 		int mineralCost = unit.getMineralCost();
 		int gasCost = unit.getGasCost();
 		
+		//Uncomment when we have resolved the unitType consistency problems
+		unitType = processUnitTypeString(unitType);
+		System.out.println(unitType);
+		Resource unitSubClass = r(unitType);
+		
+		Resource isInRegionValue = r("region"+regionId);
 		Literal unitIdValue = l(unitId);
-		Literal unitTypeIdValue = l(unitTypeId);
+		//Literal unitTypeIdValue = l(unitTypeId);
 		Literal currentHitPointsValue = l(currentHitPoints);
 		Literal maxHitPointsValue = l(maxHitPoints);
+		Literal isBeingAttackedValue = l(isBeingAttacked);
 		Literal xCoordValue = l(xCoord);
 		Literal yCoordValue = l(yCoord);
 		Literal regionIdValue = l(regionId);
@@ -175,28 +191,28 @@ public class JenaInterface{
 		Resource unitClass = r("Unit");
 		Resource unitIndividual = r("unit"+unitId);
 		
-		Property unitIdProperty = p("hasUnitIdProperty");
-		Property unitTypeIdProperty = p("hasUnitTypeId");
+		Property unitIdProperty = p("hasUnitId");
+		//Property unitTypeIdProperty = p("hasUnitTypeId");
 		Property currentHitPointsProperty = p("hasCurrentHitPoints");
 		Property maxHitPointsProperty = p("hasMaxHitPoints");
+		Property isBeingAttackedProperty = p("isBeingAttacked");
 		Property xCoordProperty = p("hasXCoord");
 		Property yCoordProperty = p("hasYCoord");
-		//Bug[WW]: this should be changed to not conflict with the property of the same name in the Region class
-		Property regionIdProperty = p("hasRegionId"); 
-		//END NOTE
+		Property isInRegionProperty = p("isInRegion"); 
 		Property armorProperty = p("hasArmor");
 		Property mineralCostProperty = p("hasMineralCost");
 		Property gasCostProperty = p("hasGasCost");
 		
-		currentModel.createIndividual(NS+"unit"+unitId, unitClass);
+		currentModel.createIndividual(NS+"unit"+unitId, unitSubClass);
 		
 		currentModel.addLiteral(unitIndividual, unitIdProperty, unitIdValue);
-		currentModel.addLiteral(unitIndividual, unitTypeIdProperty, unitTypeIdValue);
+		//currentModel.addLiteral(unitIndividual, unitTypeIdProperty, unitTypeIdValue);
 		currentModel.addLiteral(unitIndividual, currentHitPointsProperty, currentHitPointsValue);
 		currentModel.addLiteral(unitIndividual, maxHitPointsProperty, maxHitPointsValue);
+		currentModel.addLiteral(unitIndividual, isBeingAttackedProperty, isBeingAttackedValue);
 		currentModel.addLiteral(unitIndividual, xCoordProperty, xCoordValue);
 		currentModel.addLiteral(unitIndividual, yCoordProperty, yCoordValue);
-		currentModel.addLiteral(unitIndividual, regionIdProperty, regionIdValue);
+		currentModel.add(unitIndividual, isInRegionProperty, isInRegionValue);
 		currentModel.addLiteral(unitIndividual, armorProperty, armorValue);
 		currentModel.addLiteral(unitIndividual, mineralCostProperty, mineralCostValue);
 		currentModel.addLiteral(unitIndividual, gasCostProperty, gasCostValue);	
@@ -232,6 +248,19 @@ public class JenaInterface{
 		currentModel = finalModel;
 	}
 	
+	private String processUnitTypeString(String rawString){
+		rawString = rawString.replaceAll("\\s","");
+		rawString = rawString.replace("Terran","");
+		rawString = rawString.replace("SiegeMode","");
+		rawString = rawString.replace("TankMode", "");
+		return rawString;
+	}
+	
+	public void outputToFile() throws Exception{
+		FileOutputStream fout = new FileOutputStream("output_model.owl");
+		currentModel.write(fout);
+	}
+	
 	//BEGIN CITATION: 
 	//URL: https://github.com/castagna/jena-examples/blob/master/src/main/java/org/apache/jena/examples/ExampleDataTypes_01.java
 	
@@ -250,6 +279,5 @@ public class JenaInterface{
     private static Literal l ( String lexicalform, RDFDatatype datatype ) {
         return ResourceFactory.createTypedLiteral ( lexicalform, datatype );
     }
-    
     //END CITATION
 }

@@ -1,11 +1,20 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// Name: William West                                                                  //
+// Filename: Unit.java                                                                 //
+// Class: CSE428 - Semantic Web                                                        //
+// Assignment: Final Project                                                           //
+// Description:                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////
+
 import java.lang.*;
 import java.util.*;
 
 public class Unit{
 	private int unitId = -1;
-	private int unitTypeId = -1;
+	private String unitType = null;
 	private int currentHitPoints = -1;
 	private int maxHitPoints = -1;
+	private boolean isBeingAttacked = false;
 	private int xCoord = -1;
 	private int yCoord = -1;
 	private int regionId = -1;
@@ -20,8 +29,8 @@ public class Unit{
 		unitId = id;
 	}
 	
-	public void setUnitTypeId(int type){
-		unitTypeId = type;
+	public void setUnitType(String type){
+		unitType = type;
 	}
 	
 	public void setCurrentHitPoints(int currHP){
@@ -30,6 +39,10 @@ public class Unit{
 	
 	public void setMaxHitPoints(int maxHP){
 		maxHitPoints = maxHP;
+	}
+	
+	public void setIsBeingAttacked(boolean i){
+		isBeingAttacked = i;
 	}
 	
 	public void setXCoord(int x){
@@ -60,8 +73,8 @@ public class Unit{
 		return unitId;
 	}
 	
-	public int getUnitTypeId(){
-		return unitTypeId;
+	public String getUnitType(){
+		return unitType;
 	}
 	
 	public int getCurrentHitPoints(){
@@ -70,6 +83,10 @@ public class Unit{
 	
 	public int getMaxHitPoints(){
 		return maxHitPoints;
+	}
+	
+	public boolean getIsBeingAttacked(){
+		return isBeingAttacked;
 	}
 	
 	public int getXCoord(){
@@ -97,7 +114,7 @@ public class Unit{
 	}
 	
 	public String toString(){
-		String s = "["+unitId+", "+unitTypeId+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
+		String s = "["+unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
 		return s;
 	}
 }

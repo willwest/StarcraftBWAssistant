@@ -1,5 +1,5 @@
 CP=.:../lib/*
-INPUT=gameStateData-JSON-10000.txt
+INPUT=gameStateData-JSON-9500.txt
 
 all:
 	javac -classpath ${CP} BWAPIParser.java

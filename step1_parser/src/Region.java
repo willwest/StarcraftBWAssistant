@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// Name: William West                                                                  //
+// Filename: Region.java                                                               //
+// Class: CSE428 - Semantic Web                                                        //
+// Assignment: Final Project                                                           //
+// Description:                                                                        //
+/////////////////////////////////////////////////////////////////////////////////////////
+
 import java.lang.*;
 import java.util.*;
 
