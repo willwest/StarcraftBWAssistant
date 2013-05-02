@@ -24,13 +24,12 @@ public class BWAPIParser{
 			String queryString = "PREFIX sc:<"+jena.getNS()+">" +
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
 			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
-			"SELECT ?s ?p ?o " +
+			"SELECT ?s ?build " +
 			"WHERE {"+
 			"?s rdf:type sc:Player ."+
-			"?s ?p ?o ."+
-			"}";
+			"?s sc:canBuild ?build }";
 			jena.queryModel(queryString);
-			jena.outputToFile();
+			//jena.outputToFile();
 			
 		}catch(Exception e){
 			System.out.println("Error: "+e);
@@ -159,19 +158,26 @@ public class BWAPIParser{
 	
 	public static Player readPlayerObject(JsonReader reader) throws IOException{
 		Player player = new Player();
+		Player enemyPlayer = new Player();
 		reader.beginObject();
 		
 		ArrayList<Unit> units = null;
 		while(reader.hasNext()){
 			String name = reader.nextName();
 			if(name.equals("playerId")){
-				player.setPlayerId(reader.nextInt());
+				int playerId = reader.nextInt();
+				player.setPlayerId(playerId);
+				enemyPlayer.setPlayerId(playerId+1);
 			}
 			else if(name.equals("myUnits")){
-				player.setMyUnits(readUnitsArray(reader));
+				ArrayList<Unit> unitsArray = readUnitsArray(reader);
+				player.setMyUnits(unitsArray);
+				//enemyPlayer.setEnemyUnits(unitsArray);
 			}
 			else if(name.equals("enemyUnits")){
-				player.setEnemyUnits(readUnitsArray(reader));
+				ArrayList<Unit> enemyUnitsArray = readUnitsArray(reader);
+				//player.setEnemyUnits(enemyUnitsArray);
+				enemyPlayer.setMyUnits(enemyUnitsArray);
 			}
 			else{
 				reader.skipValue();

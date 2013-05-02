@@ -79,7 +79,7 @@ public class JenaInterface{
 		int playerId = player.getPlayerId();
 		
 		loadUnitsList(player.getMyUnits());
-		loadUnitsList(player.getEnemyUnits());
+		//loadUnitsList(player.getEnemyUnits());
 		
 		Resource playerClass = r("Player");
 		Resource playerIndividual = r("player"+playerId);
@@ -96,10 +96,10 @@ public class JenaInterface{
 			currentModel.add(playerIndividual, hasUnitProperty, unitIndividual);
 		}
 		
-		for(Unit u : player.getEnemyUnits()){
+		/*for(Unit u : player.getEnemyUnits()){
 			Resource unitIndividual = r("unit"+u.getUnitId());
 			currentModel.add(playerIndividual, hasEnemyUnitProperty, unitIndividual);
-		}
+		}*/
 	}
 	
 	private void loadRegion(Region region){
@@ -253,6 +253,7 @@ public class JenaInterface{
 		rawString = rawString.replace("Terran","");
 		rawString = rawString.replace("SiegeMode","");
 		rawString = rawString.replace("TankMode", "");
+		rawString = rawString.replace("SpiderMine", "");
 		return rawString;
 	}
 	

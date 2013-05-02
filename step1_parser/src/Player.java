@@ -25,9 +25,10 @@ public class Player{
 		myUnits = u;
 	}
 	
+	/*
 	public void setEnemyUnits(ArrayList<Unit> u){
 		enemyUnits = u;
-	}
+	}*/
 	
 	public int getPlayerId(){
 		return playerId;
@@ -37,9 +38,10 @@ public class Player{
 		return myUnits;
 	}
 	
+	/*
 	public ArrayList<Unit> getEnemyUnits(){
 		return enemyUnits;
-	}
+	}*/
 	
 	public String toString(){
 		String s = "["+playerId+", Units: "+myUnits+"]";
