@@ -12,29 +12,32 @@ import java.lang.*;
 import java.io.*;
 
 public class BWAPIParser{
-	public static void main(String[] args){
-		String inputFile = args[0];
-		try{
-			InputStream in = new FileInputStream(inputFile);
-			GameState gameState = readJsonStream(in);
-			JenaInterface jena = new JenaInterface("base_ontology.owl");
-			jena.loadGameState(gameState);
-			jena.reasonOverModel();
-			System.out.println(gameState);
-			String queryString = "PREFIX sc:<"+jena.getNS()+">" +
-			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
-			"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
-			"SELECT ?s ?build " +
-			"WHERE {"+
-			"?s rdf:type sc:Player ."+
-			"?s sc:canBuild ?build }";
-			jena.queryModel(queryString);
-			//jena.outputToFile();
-			
-		}catch(Exception e){
-			System.out.println("Error: "+e);
-		}
-	}
+    public static void main(String[] args) {
+        //String inputFile = args[0];
+        //initiateParser();
+    }
+
+    public static GUIInterface initiateParser() {
+        GUIInterface gui = null;
+        try {
+            InputStream in = new FileInputStream("gameStateData-JSON.txt");
+            GameState gameState = readJsonStream(in);
+            JenaInterface jena = new JenaInterface("base_ontology.owl");
+            jena.loadGameState(gameState);
+            jena.reasonOverModel();
+
+            gui = new GUIInterface(jena);
+            
+            //gui.FormatResults(gui.queryTest());
+            //jena.outputToFile();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        
+        return gui;
+        
+    }
 	
 	public static GameState readJsonStream(InputStream in) throws IOException{
 		GameState g = new GameState();
