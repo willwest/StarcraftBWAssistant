@@ -1,0 +1,67 @@
+{"gameID":"0",
+ "mapName":"(2)Heartbreak Ridge.scx",
+ "elapsedTime":"41",
+ "players":[
+    {"playerId":"0",
+     "myUnits":[
+         {"unitID":"1","unitType":"Terran SCV","currentHitPoints":"60","maxHitPoints":"60","isBeingAttacked":"0","x":"218","y":"1268","regionID":"17","armor":"0","mineralCost":"50","gasCost":"0"},
+         {"unitID":"2","unitType":"Terran SCV","currentHitPoints":"60","maxHitPoints":"60","isBeingAttacked":"0","x":"154","y":"1227","regionID":"17","armor":"0","mineralCost":"50","gasCost":"0"},
+         {"unitID":"3","unitType":"Terran SCV","currentHitPoints":"60","maxHitPoints":"60","isBeingAttacked":"0","x":"218","y":"1226","regionID":"17","armor":"0","mineralCost":"50","gasCost":"0"},
+         {"unitID":"4","unitType":"Terran SCV","currentHitPoints":"60","maxHitPoints":"60","isBeingAttacked":"0","x":"109","y":"1227","regionID":"17","armor":"0","mineralCost":"50","gasCost":"0"},
+         {"unitID":"5","unitType":"Terran Command Center","currentHitPoints":"1500","maxHitPoints":"1500","isBeingAttacked":"0","x":"288","y":"1232","regionID":"17","armor":"1","mineralCost":"400","gasCost":"0"}
+
+               ]},
+    {"playerId":"1"}
+            ],
+
+ "regions":[
+     {"regionID":"0","regionCenterX":"2585","regionCenterY":"159"},
+     {"regionID":"1","regionCenterX":"351","regionCenterY":"219"},
+     {"regionID":"2","regionCenterX":"3632","regionCenterY":"1880"},
+     {"regionID":"3","regionCenterX":"2582","regionCenterY":"2851"},
+     {"regionID":"4","regionCenterX":"3741","regionCenterY":"2825"},
+     {"regionID":"5","regionCenterX":"1517","regionCenterY":"197"},
+     {"regionID":"6","regionCenterX":"421","regionCenterY":"2647"},
+     {"regionID":"7","regionCenterX":"2895","regionCenterY":"867"},
+     {"regionID":"8","regionCenterX":"3562","regionCenterY":"228"},
+     {"regionID":"9","regionCenterX":"3692","regionCenterY":"1011"},
+     {"regionID":"10","regionCenterX":"1217","regionCenterY":"1717"},
+     {"regionID":"11","regionCenterX":"1190","regionCenterY":"2376"},
+     {"regionID":"12","regionCenterX":"489","regionCenterY":"2118"},
+     {"regionID":"13","regionCenterX":"1760","regionCenterY":"861"},
+     {"regionID":"14","regionCenterX":"1457","regionCenterY":"2893"},
+     {"regionID":"15","regionCenterX":"2406","regionCenterY":"2124"},
+     {"regionID":"16","regionCenterX":"2050","regionCenterY":"1533"},
+     {"regionID":"17","regionCenterX":"449","regionCenterY":"1230"}
+
+           ],
+
+ "chokepoints":[
+     {"chokepointID":"0","chokepointCenterX":"1092","chokepointCenterY":"2040","connectedToRegionOneID":"10","connectedToRegionTwoID":"11"},
+     {"chokepointID":"1","chokepointCenterX":"2280","chokepointCenterY":"124","connectedToRegionOneID":"0","connectedToRegionTwoID":"5"},
+     {"chokepointID":"2","chokepointCenterX":"3352","chokepointCenterY":"868","connectedToRegionOneID":"7","connectedToRegionTwoID":"9"},
+     {"chokepointID":"3","chokepointCenterX":"4056","chokepointCenterY":"784","connectedToRegionOneID":"8","connectedToRegionTwoID":"9"},
+     {"chokepointID":"4","chokepointCenterX":"1588","chokepointCenterY":"484","connectedToRegionOneID":"5","connectedToRegionTwoID":"13"},
+     {"chokepointID":"5","chokepointCenterX":"1791","chokepointCenterY":"2922","connectedToRegionOneID":"3","connectedToRegionTwoID":"14"},
+     {"chokepointID":"6","chokepointCenterX":"2460","chokepointCenterY":"676","connectedToRegionOneID":"7","connectedToRegionTwoID":"13"},
+     {"chokepointID":"7","chokepointCenterX":"1624","chokepointCenterY":"2464","connectedToRegionOneID":"11","connectedToRegionTwoID":"15"},
+     {"chokepointID":"8","chokepointCenterX":"2912","chokepointCenterY":"92","connectedToRegionOneID":"0","connectedToRegionTwoID":"8"},
+     {"chokepointID":"9","chokepointCenterX":"1500","chokepointCenterY":"2688","connectedToRegionOneID":"11","connectedToRegionTwoID":"14"},
+     {"chokepointID":"10","chokepointCenterX":"3608","chokepointCenterY":"1273","connectedToRegionOneID":"2","connectedToRegionTwoID":"9"},
+     {"chokepointID":"11","chokepointCenterX":"2100","chokepointCenterY":"1956","connectedToRegionOneID":"15","connectedToRegionTwoID":"16"},
+     {"chokepointID":"12","chokepointCenterX":"472","chokepointCenterY":"1829","connectedToRegionOneID":"17","connectedToRegionTwoID":"12"},
+     {"chokepointID":"13","chokepointCenterX":"1328","chokepointCenterY":"1400","connectedToRegionOneID":"10","connectedToRegionTwoID":"13"},
+     {"chokepointID":"14","chokepointCenterX":"2588","chokepointCenterY":"400","connectedToRegionOneID":"0","connectedToRegionTwoID":"7"},
+     {"chokepointID":"15","chokepointCenterX":"1986","chokepointCenterY":"1118","connectedToRegionOneID":"13","connectedToRegionTwoID":"16"},
+     {"chokepointID":"16","chokepointCenterX":"290","chokepointCenterY":"1910","connectedToRegionOneID":"6","connectedToRegionTwoID":"12"},
+     {"chokepointID":"17","chokepointCenterX":"2925","chokepointCenterY":"1388","connectedToRegionOneID":"7","connectedToRegionTwoID":"15"},
+     {"chokepointID":"18","chokepointCenterX":"3332","chokepointCenterY":"2921","connectedToRegionOneID":"3","connectedToRegionTwoID":"4"},
+     {"chokepointID":"19","chokepointCenterX":"2508","chokepointCenterY":"2596","connectedToRegionOneID":"3","connectedToRegionTwoID":"15"},
+     {"chokepointID":"20","chokepointCenterX":"838","chokepointCenterY":"136","connectedToRegionOneID":"1","connectedToRegionTwoID":"5"},
+     {"chokepointID":"21","chokepointCenterX":"2532","chokepointCenterY":"1524","connectedToRegionOneID":"15","connectedToRegionTwoID":"16"},
+     {"chokepointID":"22","chokepointCenterX":"708","chokepointCenterY":"2236","connectedToRegionOneID":"11","connectedToRegionTwoID":"12"},
+     {"chokepointID":"23","chokepointCenterX":"1087","chokepointCenterY":"2937","connectedToRegionOneID":"6","connectedToRegionTwoID":"14"},
+     {"chokepointID":"24","chokepointCenterX":"1580","chokepointCenterY":"1564","connectedToRegionOneID":"10","connectedToRegionTwoID":"16"}
+
+               ]
+}
