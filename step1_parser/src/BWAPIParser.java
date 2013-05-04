@@ -12,15 +12,11 @@ import java.lang.*;
 import java.io.*;
 
 public class BWAPIParser{
-    public static void main(String[] args) {
-        //String inputFile = args[0];
-        //initiateParser();
-    }
 
     public static GUIInterface initiateParser() {
         GUIInterface gui = null;
         try {
-            InputStream in = new FileInputStream("gameStateData-JSON.txt");
+            InputStream in = new FileInputStream(getLastDumpFile());
             GameState gameState = readJsonStream(in);
             JenaInterface jena = new JenaInterface("base_ontology.owl");
             jena.loadGameState(gameState);
@@ -36,9 +32,15 @@ public class BWAPIParser{
         }
         
         return gui;
-        
     }
 	
+	private static String getLastDumpFile(){
+		BufferedReader b = new FileReader("SOMETHING log.txt");
+		String s = "";
+		while((s = b.readLine())!=null){}
+		return s;
+	}
+		
 	public static GameState readJsonStream(InputStream in) throws IOException{
 		GameState g = new GameState();
 		JsonReader reader = new JsonReader(new InputStreamReader(in));

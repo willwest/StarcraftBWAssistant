@@ -78,7 +78,9 @@ public class JenaInterface{
 	private void loadPlayer(Player player){
 		int playerId = player.getPlayerId();
 		
-		loadUnitsList(player.getMyUnits());
+		if(player.getMyUnits()!=null){
+			loadUnitsList(player.getMyUnits());
+		}
 		//loadUnitsList(player.getEnemyUnits());
 		
 		Resource playerClass = r("Player");
@@ -91,9 +93,11 @@ public class JenaInterface{
 		currentModel.createIndividual(NS+"player"+playerId, playerClass);
 		currentModel.addLiteral(playerIndividual, playerIdProperty, playerIdValue);
 		
-		for(Unit u : player.getMyUnits()){
-			Resource unitIndividual = r("unit"+u.getUnitId());
-			currentModel.add(playerIndividual, hasUnitProperty, unitIndividual);
+		if(player.getMyUnits()!=null){
+			for(Unit u : player.getMyUnits()){
+				Resource unitIndividual = r("unit"+u.getUnitId());
+				currentModel.add(playerIndividual, hasUnitProperty, unitIndividual);
+			}
 		}
 		
 		/*for(Unit u : player.getEnemyUnits()){
