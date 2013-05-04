@@ -1,10 +1,12 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: BWAPIParser.java                                                          //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Author: William West
+ * Filename: BWAPIParser.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	The driver class that also acts as a JSON parser. From this class,
+ *				the base model is created, and all GameState, Player, Region, Chokepoint,
+ *				and Unit objects are created.
+*/
 
 import com.google.gson.stream.JsonReader;
 import java.util.*;
@@ -14,11 +16,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BWAPIParser{
+	private static final String INPUT_PATH = 
+		"C:\\Users\\dtdannen\\Dropbox\\StarcraftBWAssistantParserBranch\\StarcraftBWAssistant\\gameStateDumps\\log.txt";
+
     public static void main(String[] args) {
-        //String inputFile = args[0];
-        //initiateParser();
     }
 
+	/**
+	 * Initiates all operations related to the parser/gui. First fetches input file,
+	 * then parses JSON file, adds it to the base ontology, and reasons over it using
+	 * the Pellet reasoner. Calls the GUI and passes all model information to it.
+	 *
+	 * @return	the GUIInterface object with the attached model.
+	 */
     public static GUIInterface initiateParser() {
         GUIInterface gui = null;
         try {
@@ -36,23 +46,25 @@ public class BWAPIParser{
             jena.reasonOverModel();
 
             gui = new GUIInterface(jena);
-            
-            //gui.FormatResults(gui.queryTest());
-            //jena.outputToFile();
 
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
-        
         return gui;
-        
     }
     
+    /**
+     * The output of the StarCraft API provides a log file with a list of gamestate
+     * output file paths. This function returns a String representing the latest 
+     * gamestate output file.
+     * 
+     * @return	String representing the latest gamestate output file.
+     */
     public static String getLastDumpFile(){
            String s = "";
            String lastLine = "";
         try {
-            BufferedReader b = new BufferedReader(new FileReader("C:\\Users\\dtdannen\\Dropbox\\StarcraftBWAssistantParserBranch\\StarcraftBWAssistant\\gameStateDumps\\log.txt"));
+            BufferedReader b = new BufferedReader(new FileReader(INPUT_PATH));
             
             while((s=b.readLine()) != null){
                 lastLine = s;
@@ -63,6 +75,13 @@ public class BWAPIParser{
         return lastLine;
     }
     
+    /**
+     * This function takes as input an InputStream of a JSON gamestate output file and
+     * uses a JsonReader parser to extract the gamestate object (the entire document)
+     *
+     * @param in	the InputStream of the gamestate output file
+     * @return		the GameState object associated with this gamestate document 
+     */
     public static GameState readJsonStream(InputStream in) throws IOException{
 		GameState g = new GameState();
 		JsonReader reader = new JsonReader(new InputStreamReader(in));
@@ -78,6 +97,14 @@ public class BWAPIParser{
 		return g;
 	}
 	
+	/**
+	 * Extracts the lists of Player, Region, and Chokepoint objects and adds them to the
+	 * GameState object associated with this JSON file.
+	 *
+	 * @param reader		the JsonReader object containing the Gamestate object JSON.
+	 * @return gameState	the GameState object containing the Players, Regions, and
+	 *						Checkpoints of the game.
+	 */
 	public static GameState readGameState(JsonReader reader) throws IOException{
 		GameState gameState = new GameState();
 		reader.beginObject();
@@ -100,6 +127,13 @@ public class BWAPIParser{
 		return gameState;
 	}
 	
+	/**
+	 * Reads a Players array in JSON format. The array can contain any number of players,
+	 * but at its current state it assumes that there are two, one friendly and one enemy.
+	 *
+	 * @param reader	a JsonReader object currently pointed to the Player array.
+	 * @return players	an ArrayList<Player> containing all players in the JSON array.
+	 */	
 	public static ArrayList<Player> readPlayersArray(JsonReader reader) throws IOException{
 		ArrayList<Player> players = new ArrayList<Player>();
 		reader.beginArray();
@@ -110,6 +144,12 @@ public class BWAPIParser{
 		return players;
 	}
 	
+	/**
+	 * Reads a Region array in JSON format. The array can contain any number of regions.
+	 *
+	 * @param reader	a JsonReader pointed to an array of Regions.
+	 * @return regions	returns an ArrayList<Region> of Region objects.
+	 */	
 	public static ArrayList<Region> readRegionsArray(JsonReader reader) throws IOException{
 		ArrayList<Region> regions = new ArrayList<Region>();
 		reader.beginArray();
@@ -119,7 +159,13 @@ public class BWAPIParser{
 		reader.endArray();
 		return regions;
 	}
-	
+
+	/**
+	 * Reads a Chokepoint array in JSON format. The array can contain any number of chokepoints.
+	 *
+	 * @param reader		a JsonReader pointed to an array of Chokepoint objects.
+	 * @return chokepoints	an ArrayList<Chokepoint> of chokepoint objects.
+	 */	
 	public static ArrayList<Chokepoint> readChokepointsArray(JsonReader reader) throws IOException{
 		ArrayList<Chokepoint> chokepoints = new ArrayList<Chokepoint>();
 		reader.beginArray();
@@ -130,6 +176,12 @@ public class BWAPIParser{
 		return chokepoints;
 	}
 	
+	/**
+	 * Reads a Region object in JSON format.
+	 *
+	 * @param reader	a JsonReader pointed to a Region object
+	 * @return region	a Region object
+	 */	
 	public static Region readRegionObject(JsonReader reader) throws IOException{
 		Region region = new Region();
 		reader.beginObject();
@@ -153,7 +205,12 @@ public class BWAPIParser{
 		return region;
 	}
 	
-	//{"chokepointID":"0","chokepointCenterX":"2460","chokepointCenterY":"676","connectedToRegionOneID":"9","connectedToRegionTwoID":"14"}
+	/**
+	 * Reads a Chokepiont object in JSON format.
+	 *
+	 * @param reader		a JsonReader pointed to a Chokepoint object
+	 * @return chokepoint	a Chokepoint object
+	 */	
 	public static Chokepoint readChokepointObject(JsonReader reader) throws IOException{
 		Chokepoint chokepoint = new Chokepoint();
 		reader.beginObject();
@@ -183,6 +240,12 @@ public class BWAPIParser{
 		return chokepoint;
 	}
 	
+	/**
+	 * Reads a Player object in a JSON format
+	 *
+	 * @param reader	a JsonReader object pointed to a Player object
+	 * @return player	a Player object.
+	 */	
 	public static Player readPlayerObject(JsonReader reader) throws IOException{
 		Player player = new Player();
 		Player enemyPlayer = new Player();
@@ -199,11 +262,9 @@ public class BWAPIParser{
 			else if(name.equals("myUnits")){
 				ArrayList<Unit> unitsArray = readUnitsArray(reader);
 				player.setMyUnits(unitsArray);
-				//enemyPlayer.setEnemyUnits(unitsArray);
 			}
 			else if(name.equals("enemyUnits")){
 				ArrayList<Unit> enemyUnitsArray = readUnitsArray(reader);
-				//player.setEnemyUnits(enemyUnitsArray);
 				enemyPlayer.setMyUnits(enemyUnitsArray);
 			}
 			else{
@@ -214,6 +275,12 @@ public class BWAPIParser{
 		return player;
 	}
 	
+	/**
+	 * Reads an array of Units in JSON format
+	 *
+	 * @param	reader	a JsonReader object pointed to an array of Units
+	 * @return units	an ArrayList<Unit> of Unit objects contained in the array
+	 */	
 	public static ArrayList<Unit> readUnitsArray(JsonReader reader) throws IOException{
 		ArrayList<Unit> units = new ArrayList<Unit>();
 		
@@ -225,6 +292,12 @@ public class BWAPIParser{
 		return units;
 	}
 	
+	/**
+	 * Reads a Unit object, capturing all attributes in the object.
+	 *
+	 * @param reader	a JsonReader object pointed to an array of Units
+	 * @return units	a Unit object 
+	 */	
 	public static Unit readUnit(JsonReader reader) throws IOException{
 		Unit unit = new Unit();
 		

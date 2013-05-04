@@ -1,10 +1,12 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: GameState.java                                                            //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Author: William West
+ * Filename: GameState.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of a GameState object, containing
+ *				three arrays, each containing objects of type Chokepoint,
+ *				Player, and Region, respectively.
+*/
 
 import java.lang.*;
 import java.util.*;
@@ -39,10 +41,5 @@ public class GameState{
 	
 	public ArrayList<Chokepoint> getChokepoints(){
 		return chokepoints;
-	}
-	
-	public String toString(){
-		String s = "Players: "+players+",\nRegions: "+regions+"]";
-		return s;
 	}
 }
