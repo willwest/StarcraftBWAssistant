@@ -1,15 +1,15 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: Chokepoint.java                                                           //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Author: William West
+ * Filename: Chokepoint.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of a Chokepoint object, containing
+ *				the chokepoint's ID, X coordinate, Y coordinate, and
+ *				the ID of the two regions to which it is connected.
+*/
 
 import java.lang.*;
 import java.util.*;
-
-//{"chokepointID":"0","chokepointCenterX":"2460","chokepointCenterY":"676","connectedToRegionOneID":"9","connectedToRegionTwoID":"14"}
 
 public class Chokepoint{
 	private int chokepointId = -1;

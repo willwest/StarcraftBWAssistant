@@ -1,10 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: Player.java                                                               //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Author: William West
+ * Filename: Player.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of a Player object, containing
+ *				an array of that player's units and their ID.
+*/
 
 import java.lang.*;
 import java.util.*;
@@ -25,26 +26,11 @@ public class Player{
 		myUnits = u;
 	}
 	
-	/*
-	public void setEnemyUnits(ArrayList<Unit> u){
-		enemyUnits = u;
-	}*/
-	
 	public int getPlayerId(){
 		return playerId;
 	}
 	
 	public ArrayList<Unit> getMyUnits(){
 		return myUnits;
-	}
-	
-	/*
-	public ArrayList<Unit> getEnemyUnits(){
-		return enemyUnits;
-	}*/
-	
-	public String toString(){
-		String s = "["+playerId+", Units: "+myUnits+"]";
-		return s;
 	}
 }

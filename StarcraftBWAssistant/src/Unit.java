@@ -1,10 +1,14 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: Unit.java                                                                 //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Author: William West
+ * Filename: Unit.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of a Unit object, containing
+ *				the unit's ID, type, current HP, max HP, whether it is
+ *				currently being attacked, it's x-coordinate, y-coordinate,
+ *				the region ID in which it is located, the amount of armor
+ *				it has, it's mineral cost, and gas cost.
+*/
 
 import java.lang.*;
 import java.util.*;
@@ -111,10 +115,5 @@ public class Unit{
 	
 	public int getGasCost(){
 		return gasCost;
-	}
-	
-	public String toString(){
-		String s = "["+unitId+", "+unitType+", "+currentHitPoints+", "+xCoord+", "+yCoord+", "+regionId+", "+armor+", "+mineralCost+", "+gasCost+"]";
-		return s;
 	}
 }

@@ -1,10 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////////////////
-// Name: William West                                                                  //
-// Filename: Region.java                                                               //
-// Class: CSE428 - Semantic Web                                                        //
-// Assignment: Final Project                                                           //
-// Description:                                                                        //
-/////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Name: William West
+ * Filename: Region.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of a Region object, containing
+ *				the region's ID, x-coordinate, and y-coordinate.
+*/
 
 import java.lang.*;
 import java.util.*;
@@ -39,10 +40,5 @@ public class Region{
 	
 	public int getRegionCenterY(){
 		return regionCenterY;
-	}
-	
-	public String toString(){
-		String s = "["+regionId+", "+regionCenterX+", "+regionCenterY+"]";
-		return s;
 	}
 }
