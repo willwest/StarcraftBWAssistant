@@ -1,3 +1,6 @@
+/**
+ * @author Kostas Hatalis
+ */
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
@@ -15,33 +18,70 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import org.apache.jena.atlas.lib.Pair;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.util.Rotation;
 
-/**
- * @author Kostas Hatalis
- */
 public class GUI extends javax.swing.JFrame {
 
     public static boolean hasStarted = false;
     private String mapImageFilename = "heartbreakridge.jpg";
     private JLabel mapImageLabel;
-
-    public GUI() {
+    ChartPanel cp;
+    
+    public GUI() {// Creates new form GUI
         initComponents();
-
-
         //mapImageLabel.setVisible(true);
         //mapImagePanel.setVisible(true);
         //System.out.println("added the image");
+    } 
 
-    } // Creates new form GUI
-
+    // this updates the image of the map
     public void update() {
         GUIInterface gui = BWAPIParser.initiateParser();
         updateEnemyAbilities(gui);
-        updateRegionStates(gui); // this updates the image of the map
+        updateRegionStates(gui); 
         updateProgressBar(gui);
     }
-
+    
+    /* Creates a the pie chart dataset */
+    private PieDataset createDataset() {
+        DefaultPieDataset result = new DefaultPieDataset();
+        result.setValue("Structures: "+40+"%", 40);
+        result.setValue("Ground Units: "+51+"%", 51); // Change this to be realtime!
+        result.setValue("Flying Units: "+9+"%", 9);
+        return result; 
+    }
+    
+    /* Create pie a chart */
+    private JFreeChart createChart(PieDataset dataset, String title) {
+        JFreeChart chart = ChartFactory.createPieChart3D(
+                title,dataset,true,true,false);
+        PiePlot3D plot = (PiePlot3D) chart.getPlot();
+        plot.setStartAngle(290);
+        plot.setDirection(Rotation.CLOCKWISE);
+        plot.setForegroundAlpha(0.5f);
+        return chart;  
+    }
+        
+    /* Set the created pie chart to an internal Jframe */
+    private void display(){
+        PieDataset dataset = createDataset();
+        JFreeChart chart   = createChart(dataset,"Player 1 Units");
+        ChartPanel cp = new ChartPanel(chart);
+        this.jInternalFrame1.setContentPane(cp);
+        this.jInternalFrame1.pack();
+        this.jInternalFrame1.setVisible(true);
+        this.jInternalFrame1.setSize(100, 100);
+        this.pack();
+        this.setVisible(true);
+    }
+    
     // WARNING: Do NOT modify this code. 
     //@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -95,6 +135,7 @@ public class GUI extends javax.swing.JFrame {
         mapImageLabel = new JLabel(new ImageIcon(new File(mapImageFilename).getAbsolutePath()));
         mapImagePanel = new javax.swing.JPanel();
         mapImageLabelPlz = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -254,6 +295,19 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 144, Short.MAX_VALUE)
+        );
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -279,7 +333,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(unitsHealthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))))
-                        .addGap(0, 151, Short.MAX_VALUE))
+                        .addGap(0, 41, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(mapImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -364,6 +418,10 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,36 +513,32 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(mapImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Action button, updates map info, enemy info, and player statistics
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        update();
+        display(); // updates pie chart of players stats
+        update(); // updates map and players movements and enemy stats
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    // This method calls to the ontology to infer he possibile units an enemy can build based on seen units
     public void updateEnemyAbilities(GUIInterface gui) {
-
         String[] words = {"missleturret", "engineeringbay", "supplydepot", "factory",
             "barrcks", "bunker", "commandCenter", "armory", "starport", "refinery", "sciencefaciliy", "academy"};
-
         ArrayList<String> stringList = new ArrayList<String>(words.length);
-
         for (String s : words) {
             stringList.add(s);
         }
-
-
-
         //stringList = (ArrayList<String>) Arrays.asList(new String[]{"missleturret","engineeringbay","supplydepot","factory",
-//"barrcks","bunker","commandCenter","armory","starport","refinery","sciencefaciliy","academy"});
-
-
+        //"barrcks","bunker","commandCenter","armory","starport","refinery","sciencefaciliy","academy"});
         ResultSet results = gui.queryEnemyAbilities();
-//        jTextPane1.setText("Importing Ontology...\n");
+        // jTextPane1.setText("Importing Ontology...\n");
         while (results.hasNext()) {
             QuerySolution soln = results.nextSolution();
             //System.out.println(soln);
@@ -505,7 +559,7 @@ public class GUI extends javax.swing.JFrame {
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("ghost")) {
                     ghost.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("vultures")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("vulture")) {
                     vulture.setForeground(c);
                 }
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("tank")) {
@@ -529,19 +583,16 @@ public class GUI extends javax.swing.JFrame {
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("valkyrie")) {
                     valkyrie.setForeground(c);
                 }
-
             }
-
             if (soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-
                 Color c = new Color(0, 206, 209);
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("factory")) {
                     factor.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("engineeringbay")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("engineeringBay")) {
                     engbay.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("supplydepot")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("supplyDepot")) {
                     supplyDepot.setForeground(c);
                 }
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("commandCenter")) {
@@ -559,86 +610,69 @@ public class GUI extends javax.swing.JFrame {
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("refinery")) {
                     refinery.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("sciencefacility")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("scienceFacility")) {
                     science.setForeground(c);
                 }
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("starport")) {
                     starport.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("missleturret")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("missleTurret")) {
                     turret.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("ComsatStation")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("comsatStation")) {
                     comsat.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("MachineShop")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("machineShop")) {
                     machineshop.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("ControlTower")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("controlTower")) {
                     controltower.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("PhysicsLab")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("physicsLab")) {
                     physicslab.setForeground(c);
                 }
-                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("NuclearSilo")) {
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("nuclearSilo")) {
                     nuclearsilo.setForeground(c);
                 }
-
-
-                /**
-                 * ************************
-                 */
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("covertOps")) {
+                    covertops.setForeground(c);
+                }
+                if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("barracks")) {
+                    barracks.setForeground(c);
+                }                
             }
-
         }
-
-        for (int i = 1; i < stringList.size(); i++) {
-            //jTextPane1.setText("Region " + i + " = Player 1\n");
-            //jTextPane1.setForeground(Color.BLUE);
-        }
-        //jTextArea2.setForeground(Color.BLUE);
-
     }
 
+    // Keeps track o player and enemy positions on map and overlays them too to the GUI
     public void updateRegionStates(GUIInterface gui) {
         ResultSet resultsC = gui.queryContestedRegions();
-
-        // for each region that is controlled by a player
+        // For each region that is controlled by a player
         // find that regions centerX and centerY values, scale them,
-        // and create a new image that writes the players name over that region
-
-        // keep a running data structure that maps region x,y pairs to players 
-        // that control them
-
+        // and create a new image that writes the players name over that region.
+        // Keep a running data structure that maps region x,y pairs to players 
+        // that control them.
         // The pair of ints represents the x and y of the region and the
         // value int represents the player id, -1 signifies no player (unknown)
 
-        // 
         //HashMap<String,int> regionsOwnedByPlayers = new HashMap<String, int>();
-
         ArrayList<Pair<Integer, Integer>> contestedCoords = new ArrayList<Pair<Integer, Integer>>();
-
         while (resultsC.hasNext()) {
             QuerySolution soln = resultsC.nextSolution();
             // add the coord of the result to the list of contested regions coords
             contestedCoords.add(new Pair(soln.getLiteral("centerX").getInt(),
                     soln.getLiteral("centerY").getInt()));
         }
-
+        
         // now do same thing but for battle regions
-
         ResultSet resultsB = gui.queryBattleRegions();
-
-
         ArrayList<Pair<Integer, Integer>> battleCoords = new ArrayList<Pair<Integer, Integer>>();
-
         while (resultsB.hasNext()) {
             QuerySolution soln = resultsB.nextSolution();
             // add the coord of the result to the list of contested regions coords
             battleCoords.add(new Pair(soln.getLiteral("centerX").getInt(),
                     soln.getLiteral("centerY").getInt()));
         }
-
         // draw all battle coords
         BufferedImage mapImageOriginal = null;
         try {
@@ -650,24 +684,20 @@ public class GUI extends javax.swing.JFrame {
         }
 
         // then draw all contested coords not in battle coords
-
         // EWWWW - hardcoded map height and width, only works on heartbreak ridge
         int mapHeight = 96 * 32;
         int mapWidth = 128 * 32;
-
         ResultSet myUnitsResults = gui.queryMyUnits();
-        ArrayList<Pair<Integer, Integer>> myUnits = new ArrayList<Pair<Integer, Integer>>();
+        ArrayList<Pair<Integer, Integer>> myUnits = new ArrayList<Pair<Integer, Integer>>();    
         
-
         while (myUnitsResults.hasNext()) {
             QuerySolution soln = myUnitsResults.nextSolution();
             // add the coord of the result to the list of contested regions coords
             myUnits.add(new Pair(soln.getLiteral("x").getInt(),
                     soln.getLiteral("y").getInt()));
-        }
-        
+        }      
         ResultSet enemyUnitsResults = gui.queryEnemyUnits();
-        ArrayList<Pair<Integer, Integer>> enemyUnits = new ArrayList<Pair<Integer, Integer>>();
+        ArrayList<Pair<Integer, Integer>> enemyUnits = new ArrayList<Pair<Integer, Integer>>();      
         
         while (enemyUnitsResults.hasNext()) {
             QuerySolution soln = enemyUnitsResults.nextSolution();
@@ -679,7 +709,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO - add enemy units
         BufferedImage newMapImage = redrawMapImage(mapImageOriginal,
                 contestedCoords, battleCoords, mapHeight, mapWidth, myUnits, enemyUnits);
-        
+
         // now update the label
         mapImageLabelPlz.removeAll();
         mapImageLabelPlz.setIcon(new ImageIcon(newMapImage));
@@ -702,10 +732,8 @@ public class GUI extends javax.swing.JFrame {
             ArrayList<Pair<Integer, Integer>> battleCoords, int mapHeight, int mapWidth, ArrayList<Pair<Integer, Integer>> myUnits, ArrayList<Pair<Integer, Integer>> enemyUnits) {
         int w = origImage.getWidth();
         int h = origImage.getHeight();
-
         double heightScale = mapHeight / h;
         double widthScale = mapWidth / w;
-
         //BufferedImage img = new BufferedImage(
         //         w, h, BufferedImage.TYPE_INT_ARGB);
         BufferedImage img = origImage;
@@ -718,7 +746,6 @@ public class GUI extends javax.swing.JFrame {
             int adjustedY = (int) ((double) u.cdr() / widthScale);
             g2d.drawRect(adjustedX, adjustedY, 2, 2);
         }
-
         // draw red dots where enemy units are
         g2d.setPaint(Color.red);
         // draw green dots where our units are
@@ -739,7 +766,6 @@ public class GUI extends javax.swing.JFrame {
             int adjustedY = (int) ((double) b.cdr() / widthScale);
             g2d.drawString(battleStr, adjustedX, adjustedY);
         }
-
         // now draw yellow question marks for contesed (but not battle) regions
         g2d.setPaint(Color.yellow);
         g2d.setFont(new Font("Serif", Font.BOLD, 24));
@@ -752,12 +778,10 @@ public class GUI extends javax.swing.JFrame {
                 g2d.drawString(battleStr, adjustedX, adjustedY);
             }
         }
-
         //int x = img.getWidth() - fm.stringWidth(s) - 5;
         //int y = fm.getHeight();
         //g2d.drawString(s, x, y);
         g2d.dispose();
-
         return img;
     }
 
@@ -784,17 +808,14 @@ public class GUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI().setVisible(true);
             }
         });
-
-
-
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel academy;
     private javax.swing.JLabel armory;
@@ -814,6 +835,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -848,19 +870,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel wraith;
     // End of variables declaration//GEN-END:variables
 
+    // Keep track of players total army health
     private void updateProgressBar(GUIInterface gui) {
         ResultSet results = gui.queryArmyHealth();
-
         int runningCurrHP = 0;
         int runningMaxHP = 0;
         while (results.hasNext()) {
             QuerySolution soln = results.nextSolution();
-
             runningCurrHP += soln.getLiteral("curr").getInt();
             runningMaxHP += soln.getLiteral("max").getInt();
-
         }
-
         unitsHealthProgressBar.setMaximum(runningMaxHP);
         unitsHealthProgressBar.setValue(runningCurrHP);
     }

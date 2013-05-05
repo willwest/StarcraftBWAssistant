@@ -17,8 +17,7 @@ import java.util.logging.Logger;
 
 public class BWAPIParser{
 
-	private static final String INPUT_PATH = 
-		"C:\\Users\\dtdannen\\Dropbox\\StarcraftBWAssistantParserBranch\\StarcraftBWAssistant\\gameStateDumps\\log.txt";
+	private static final String INPUT_PATH = "C:\\Users\\dustin\\Dropbox\\StarcraftBWAssistantParserBranch\\StarcraftBWAssistant\\gameStateDumps\\log.txt";
 
     public static void main(String[] args) {
     }
