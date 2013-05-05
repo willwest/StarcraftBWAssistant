@@ -930,7 +930,7 @@
             <rdf:Description rdf:about="&starcraft_ontology;Dropship"/>
             <rdf:Description rdf:about="&starcraft_ontology;ScienceVessel"/>
             <rdf:Description rdf:about="&starcraft_ontology;Valkyrie"/>
-            <rdf:Description rdf:about="&starcraft_ontology;Wrath"/>
+            <rdf:Description rdf:about="&starcraft_ontology;Wraith"/>
         </disjointUnionOf>
     </Class>
     
@@ -1271,9 +1271,9 @@
     
 
 
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Wrath -->
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#Wraith -->
 
-    <Class rdf:about="&starcraft_ontology;Wrath">
+    <Class rdf:about="&starcraft_ontology;Wraith">
         <rdfs:subClassOf rdf:resource="&starcraft_ontology;FlyingVehicle"/>
         <rdfs:comment>The wrath is the main attack flying vehicle for Tarrens and can attak flying and ground units.</rdfs:comment>
     </Class>
@@ -1291,14 +1291,6 @@
     
 
 
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#academy1 -->
-
-    <NamedIndividual rdf:about="&starcraft_ontology;academy1">
-        <rdf:type rdf:resource="&starcraft_ontology;Academy"/>
-    </NamedIndividual>
-    
-
-
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#academyAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;academyAvailable"/>
@@ -1308,14 +1300,6 @@
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#armoryAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;armoryAvailable"/>
-    
-
-
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#barracks -->
-
-    <NamedIndividual rdf:about="&starcraft_ontology;barracks">
-        <rdf:type rdf:resource="&starcraft_ontology;Barracks"/>
-    </NamedIndividual>
     
 
 
@@ -1379,14 +1363,6 @@
     
 
 
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#firebat1 -->
-
-    <NamedIndividual rdf:about="&starcraft_ontology;firebat1">
-        <rdf:type rdf:resource="&starcraft_ontology;Firebat"/>
-    </NamedIndividual>
-    
-
-
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#firebatAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;firebatAvailable"/>
@@ -1408,14 +1384,6 @@
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#machineShopAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;machineShopAvailable"/>
-    
-
-
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#marine1 -->
-
-    <NamedIndividual rdf:about="&starcraft_ontology;marine1">
-        <rdf:type rdf:resource="&starcraft_ontology;Marine"/>
-    </NamedIndividual>
     
 
 
@@ -1459,7 +1427,6 @@
 
     <NamedIndividual rdf:about="&starcraft_ontology;player0">
         <rdf:type rdf:resource="&starcraft_ontology;Player"/>
-        <starcraft_ontology:hasUnit rdf:resource="&starcraft_ontology;marine1"/>
     </NamedIndividual>
     
 
@@ -1478,15 +1445,21 @@
     
 
 
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#scienceFaciliyAvailable -->
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#scienceFacilityAvailable -->
 
-    <NamedIndividual rdf:about="&starcraft_ontology;scienceFaciliyAvailable"/>
+    <NamedIndividual rdf:about="&starcraft_ontology;scienceFacilityAvailable"/>
     
 
 
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#scienceVesselAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;scienceVesselAvailable"/>
+    
+
+
+    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#scvAvailable -->
+
+    <NamedIndividual rdf:about="&starcraft_ontology;scvAvailable"/>
     
 
 
@@ -1532,12 +1505,6 @@
     
 
 
-    <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#workerAvailable -->
-
-    <NamedIndividual rdf:about="&starcraft_ontology;workerAvailable"/>
-    
-
-
     <!-- http://insyte.cse.lehigh.edu/starcraft_ontology#wraithAvailable -->
 
     <NamedIndividual rdf:about="&starcraft_ontology;wraithAvailable"/>
@@ -1555,13 +1522,128 @@
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;marineAvailable"/>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
     </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;firebatAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Academy"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;nuclearMissileAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;CommandCenter"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;NuclearSilo"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;missileTurretAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;factoryAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;machineShopAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;SiegeTank"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;factoryAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Vulture"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;armoryAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;factoryAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Goliath"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
     <Restriction>
         <equivalentClass>
             <Restriction>
@@ -1572,16 +1654,176 @@
         <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
         <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
     </Restriction>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;physicsLabAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;starportAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Battlecruiser"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
     <Restriction>
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
+                <hasValue rdf:resource="&starcraft_ontology;engineeringbayAvaliable"/>
             </Restriction>
         </equivalentClass>
         <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;armoryAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;starportAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Valkyrie"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;bunkerAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;starportAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Wraith"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;physicsLabAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;wraithAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
         <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
     </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;ghostAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;supplyDepotAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+    </Restriction>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;refineryAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Marine"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
     <Class>
         <equivalentClass>
             <Restriction>
@@ -1604,86 +1846,22 @@
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;machineShopAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
-    </Restriction>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;bunkerAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;Marine"/>
-    </Restriction>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
                 <hasValue rdf:resource="&starcraft_ontology;covertOpsAvailable"/>
             </Restriction>
         </equivalentClass>
         <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
         <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
     </Restriction>
-    <Class>
+    <Restriction>
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;missileTurretAvailable"/>
+                <hasValue rdf:resource="&starcraft_ontology;machineShopAvailable"/>
             </Restriction>
         </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;scienceFaciliyAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
+        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+    </Restriction>
     <Restriction>
         <equivalentClass>
             <Restriction>
@@ -1694,24 +1872,6 @@
         <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
         <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
     </Restriction>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;goliathAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Armory"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
     <Class>
         <equivalentClass>
             <Restriction>
@@ -1730,16 +1890,24 @@
             </Restriction>
         </intersectionOf>
     </Class>
-    <Restriction>
+    <Class>
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
+                <hasValue rdf:resource="&starcraft_ontology;bunkerAvailable"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
-    </Restriction>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;EngineeringBay"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
     <Class>
         <equivalentClass>
             <Restriction>
@@ -1761,28 +1929,111 @@
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;refineryAvailable"/>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;tankAvailable"/>
             </Restriction>
         </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
     </Restriction>
     <Class>
         <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;scienceFacilityAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;starportAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
             <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;bunkerAvailable"/>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceVessel"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;goliathAvailable"/>
             </Restriction>
         </equivalentClass>
         <intersectionOf rdf:parseType="Collection">
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Armory"/>
             </Restriction>
             <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;academyAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Firebat"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Restriction>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
+                <hasValue rdf:resource="&starcraft_ontology;marineAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+    </Restriction>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;commandCenterAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;nuclearSiloAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;NuclearMissile"/>
             </Restriction>
         </intersectionOf>
     </Class>
@@ -1790,11 +2041,11 @@
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;physicsLabAvailable"/>
+                <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
             </Restriction>
         </equivalentClass>
         <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
     </Restriction>
     <Class>
         <equivalentClass>
@@ -1814,6 +2065,52 @@
             </Restriction>
         </intersectionOf>
     </Class>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;controlTowerAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;starportAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Dropship"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;academyAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Medic"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
     <Restriction>
         <equivalentClass>
             <Restriction>
@@ -1824,67 +2121,30 @@
         <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
         <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
     </Restriction>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;spellScannerSweepAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;ComsatStation"/>
-    </Restriction>
     <Class>
         <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Firebat"/>
-            </Restriction>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;academyAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
+                    </Restriction>
+                    <Restriction>
+                        <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                        <hasValue rdf:resource="&starcraft_ontology;covertOpsAvailable"/>
+                    </Restriction>
+                </intersectionOf>
+            </Class>
         </equivalentClass>
         <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;academyAvailable"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;barracksAvailable"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;firebatAvailable"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;supplyDepotAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
-    </Restriction>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;nuclearSiloAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;Player"/>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;CommandCenter"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;CovertOps"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Ghost"/>
             </Restriction>
         </intersectionOf>
     </Class>
@@ -1910,13 +2170,42 @@
         <equivalentClass>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;factoryAvailable"/>
+                <hasValue rdf:resource="&starcraft_ontology;nuclearSiloAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;CommandCenter"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;CovertOps"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&starcraft_ontology;player0"/>
+            <rdf:Description rdf:about="&starcraft_ontology;player1"/>
+        </distinctMembers>
+    </rdf:Description>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;scienceFacilityAvailable"/>
             </Restriction>
         </equivalentClass>
         <intersectionOf rdf:parseType="Collection">
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
             </Restriction>
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
@@ -1927,86 +2216,12 @@
     <Restriction>
         <equivalentClass>
             <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;tankAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;Factory"/>
-    </Restriction>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;firebatAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Academy"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;wraithAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
-    </Restriction>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;nuclearMissileAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;CommandCenter"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;NuclearSilo"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Class>
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;canTrain"/>
-                <hasValue rdf:resource="&starcraft_ontology;ghostAvailable"/>
-            </Restriction>
-        </equivalentClass>
-        <intersectionOf rdf:parseType="Collection">
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
-            </Restriction>
-            <Restriction>
-                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
-                <someValuesFrom rdf:resource="&starcraft_ontology;ScienceFacility"/>
-            </Restriction>
-        </intersectionOf>
-    </Class>
-    <Restriction>
-        <equivalentClass>
-            <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
-                <hasValue rdf:resource="&starcraft_ontology;engineeringbayAvaliable"/>
+                <hasValue rdf:resource="&starcraft_ontology;spellScannerSweepAvailable"/>
             </Restriction>
         </equivalentClass>
         <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
-        <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
+        <someValuesFrom rdf:resource="&starcraft_ontology;ComsatStation"/>
     </Restriction>
     <Class>
         <equivalentClass>
@@ -2023,6 +2238,24 @@
             <Restriction>
                 <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
                 <someValuesFrom rdf:resource="&starcraft_ontology;Starport"/>
+            </Restriction>
+        </intersectionOf>
+    </Class>
+    <Class>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;canBuild"/>
+                <hasValue rdf:resource="&starcraft_ontology;factoryAvailable"/>
+            </Restriction>
+        </equivalentClass>
+        <intersectionOf rdf:parseType="Collection">
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasStructure"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;Barracks"/>
+            </Restriction>
+            <Restriction>
+                <onProperty rdf:resource="&starcraft_ontology;hasUnit"/>
+                <someValuesFrom rdf:resource="&starcraft_ontology;SCV"/>
             </Restriction>
         </intersectionOf>
     </Class>
