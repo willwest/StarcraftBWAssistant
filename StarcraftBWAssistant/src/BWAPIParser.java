@@ -14,6 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BWAPIParser{
+    
+    private final static String logFilename = "gameStateDumps\\log.txt";
+    
     public static void main(String[] args) {
         //String inputFile = args[0];
         //initiateParser();
@@ -52,7 +55,7 @@ public class BWAPIParser{
            String s = "";
            String lastLine = "";
         try {
-            BufferedReader b = new BufferedReader(new FileReader("C:\\Users\\dtdannen\\Dropbox\\StarcraftBWAssistantParserBranch\\StarcraftBWAssistant\\gameStateDumps\\log.txt"));
+            BufferedReader b = new BufferedReader(new FileReader(logFilename));
             
             while((s=b.readLine()) != null){
                 lastLine = s;

@@ -146,12 +146,51 @@ public class GUIInterface {
         String queryString = "PREFIX sc:<" + jena.getNS() + ">"
                 + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
                 + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
-                + "SELECT ?s ?x ?y "
+                + "SELECT ?u ?x ?y "
                 + "WHERE {"
-                + //"?player0 rdf:type sc:Player ."+
-                "?s rdf:type sc:Unit ."
-                + "?s sc:hasXCoord ?x ."
-                + "?s sc:hasYCoord ?y ."
+                + "?s sc:hasPlayerId 0 ." // human is always 0
+                + "?s sc:hasUnit ?u ."
+                + "?u rdf:type sc:Unit ."
+                + "?u sc:hasXCoord ?x ."
+                + "?u sc:hasYCoord ?y ."
+                + "}";
+
+        // run the query
+        ResultSet results = jena.queryModel(queryString);
+
+        // make query object
+        Query query = QueryFactory.create(queryString);
+
+        // format results and send to standard out
+        //ResultSetFormatter.out(System.out, results, query);
+
+        // Get all units that a player can build and train
+       /* while (results.hasNext()) {
+         QuerySolution soln = results.nextSolution();
+         //System.out.println(soln);
+         String matchTrain = "canTrain";
+         String matchBuild = "canBuild";
+         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
+         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
+         System.out.println(soln.getResource("o").toString().replace(NS,""));
+         }  
+         }*/
+
+        return results;
+        // System.out.println(results);
+    }
+    
+    public ResultSet queryEnemyUnits() {
+        String queryString = "PREFIX sc:<" + jena.getNS() + ">"
+                + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
+                + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
+                + "SELECT ?u ?x ?y "
+                + "WHERE {"
+                + "?s sc:hasPlayerId 1 ." // human is always 0
+                + "?s sc:hasUnit ?u ."
+                + "?u rdf:type sc:Unit ."
+                + "?u sc:hasXCoord ?x ."
+                + "?u sc:hasYCoord ?y ."
                 + "}";
 
         // run the query
