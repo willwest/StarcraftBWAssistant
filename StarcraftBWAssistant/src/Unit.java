@@ -10,9 +10,6 @@
  *				it has, it's mineral cost, and gas cost.
 */
 
-import java.lang.*;
-import java.util.*;
-
 public class Unit{
 	private int unitId = -1;
 	private String unitType = null;

@@ -7,7 +7,6 @@
  *				an array of that player's units and their ID.
 */
 
-import java.lang.*;
 import java.util.*;
 
 public class Player{

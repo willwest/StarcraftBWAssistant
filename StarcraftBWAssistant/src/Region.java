@@ -7,9 +7,6 @@
  *				the region's ID, x-coordinate, and y-coordinate.
 */
 
-import java.lang.*;
-import java.util.*;
-
 public class Region{
 	private int regionCenterX = -1;
 	private int regionCenterY = -1;

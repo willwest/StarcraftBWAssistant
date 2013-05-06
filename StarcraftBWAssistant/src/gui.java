@@ -1,6 +1,12 @@
 /**
- * @author Kostas Hatalis
- */
+ * Author: Kostas Hatalis
+ * Filename: Unit.java
+ * Class: CSE428 - Semantic Web
+ * Assignment: Final Project
+ * Description:	Class representation of the GUI - also contains the 
+ * functionality to redraw the map image and update what units the enemy can
+ * build/train.
+*/
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
@@ -18,27 +24,17 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import org.apache.jena.atlas.lib.Pair;
-import javax.swing.JFrame;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
-import org.jfree.util.Rotation;
 
-public class GUI extends javax.swing.JFrame {
+public class gui extends javax.swing.JFrame {
 
     public static boolean hasStarted = false;
     private String mapImageFilename = "heartbreakridge.jpg";
     private JLabel mapImageLabel;
     ChartPanel cp;
     
-    public GUI() {// Creates new form GUI
+    public gui() {// Creates new form GUI
         initComponents();
-        //mapImageLabel.setVisible(true);
-        //mapImagePanel.setVisible(true);
-        //System.out.println("added the image");
     } 
 
     // this updates the image of the map
@@ -47,39 +43,6 @@ public class GUI extends javax.swing.JFrame {
         updateEnemyAbilities(gui);
         updateRegionStates(gui); 
         updateProgressBar(gui);
-    }
-    
-    /* Creates a the pie chart dataset */
-    private PieDataset createDataset() {
-        DefaultPieDataset result = new DefaultPieDataset();
-        result.setValue("Structures: "+40+"%", 40);
-        result.setValue("Ground Units: "+51+"%", 51); // Change this to be realtime!
-        result.setValue("Flying Units: "+9+"%", 9);
-        return result; 
-    }
-    
-    /* Create pie a chart */
-    private JFreeChart createChart(PieDataset dataset, String title) {
-        JFreeChart chart = ChartFactory.createPieChart3D(
-                title,dataset,true,true,false);
-        PiePlot3D plot = (PiePlot3D) chart.getPlot();
-        plot.setStartAngle(290);
-        plot.setDirection(Rotation.CLOCKWISE);
-        plot.setForegroundAlpha(0.5f);
-        return chart;  
-    }
-        
-    /* Set the created pie chart to an internal Jframe */
-    private void display(){
-        PieDataset dataset = createDataset();
-        JFreeChart chart   = createChart(dataset,"Player 1 Units");
-        ChartPanel cp = new ChartPanel(chart);
-        this.jInternalFrame1.setContentPane(cp);
-        this.jInternalFrame1.pack();
-        this.jInternalFrame1.setVisible(true);
-        this.jInternalFrame1.setSize(100, 100);
-        this.pack();
-        this.setVisible(true);
     }
     
     // WARNING: Do NOT modify this code. 
@@ -135,7 +98,6 @@ public class GUI extends javax.swing.JFrame {
         mapImageLabel = new JLabel(new ImageIcon(new File(mapImageFilename).getAbsolutePath()));
         mapImagePanel = new javax.swing.JPanel();
         mapImageLabelPlz = new javax.swing.JLabel();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -165,6 +127,8 @@ public class GUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFocusable(false);
         setResizable(false);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -183,29 +147,65 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Opponent Can Train");
 
+        marine.setForeground(new java.awt.Color(204, 204, 204));
         marine.setText("Marine");
+        marine.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        marine.setFocusable(false);
 
+        firebat.setForeground(new java.awt.Color(204, 204, 204));
         firebat.setText("Firebat");
+        firebat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        firebat.setFocusable(false);
 
+        medic.setForeground(new java.awt.Color(204, 204, 204));
         medic.setText("Medic");
+        medic.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        medic.setFocusable(false);
 
+        ghost.setForeground(new java.awt.Color(204, 204, 204));
         ghost.setText("Ghost");
+        ghost.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ghost.setFocusable(false);
 
+        tank.setForeground(new java.awt.Color(204, 204, 204));
         tank.setText("Tank");
+        tank.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tank.setFocusable(false);
 
+        vulture.setForeground(new java.awt.Color(204, 204, 204));
         vulture.setText("Vultures");
+        vulture.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        vulture.setFocusable(false);
 
+        goliath.setForeground(new java.awt.Color(204, 204, 204));
         goliath.setText("Goliath");
+        goliath.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        goliath.setFocusable(false);
 
+        wraith.setForeground(new java.awt.Color(204, 204, 204));
         wraith.setText("Wraith");
+        wraith.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        wraith.setFocusable(false);
 
+        dropship.setForeground(new java.awt.Color(204, 204, 204));
         dropship.setText("Dropship");
+        dropship.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        dropship.setFocusable(false);
 
+        valkyrie.setForeground(new java.awt.Color(204, 204, 204));
         valkyrie.setText("Valkyrie");
+        valkyrie.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        valkyrie.setFocusable(false);
 
+        scienceVessel.setForeground(new java.awt.Color(204, 204, 204));
         scienceVessel.setText("Science Vessel");
+        scienceVessel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        scienceVessel.setFocusable(false);
 
+        battleCruiser.setForeground(new java.awt.Color(204, 204, 204));
         battleCruiser.setText("BattleCruiser");
+        battleCruiser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        battleCruiser.setFocusable(false);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -219,41 +219,90 @@ public class GUI extends javax.swing.JFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Opponent Can Build");
 
+        supplyDepot.setForeground(new java.awt.Color(204, 204, 204));
         supplyDepot.setText("Supply Depot");
+        supplyDepot.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        supplyDepot.setFocusable(false);
 
+        refinery.setForeground(new java.awt.Color(204, 204, 204));
         refinery.setText("Refinery");
+        refinery.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        refinery.setFocusable(false);
 
+        commandCenter.setForeground(new java.awt.Color(204, 204, 204));
         commandCenter.setText("Command Center");
+        commandCenter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        commandCenter.setFocusable(false);
 
+        barracks.setForeground(new java.awt.Color(204, 204, 204));
         barracks.setText("Barracks");
+        barracks.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        barracks.setFocusable(false);
 
+        factor.setForeground(new java.awt.Color(204, 204, 204));
         factor.setText("Factory");
+        factor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        factor.setFocusable(false);
 
+        starport.setForeground(new java.awt.Color(204, 204, 204));
         starport.setText("Starport");
+        starport.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        starport.setFocusable(false);
 
+        engbay.setForeground(new java.awt.Color(204, 204, 204));
         engbay.setText("Eng Bay");
+        engbay.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        engbay.setFocusable(false);
 
+        academy.setForeground(new java.awt.Color(204, 204, 204));
         academy.setText("Academy");
+        academy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        academy.setFocusable(false);
 
+        armory.setForeground(new java.awt.Color(204, 204, 204));
         armory.setText("Armory");
+        armory.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        armory.setFocusable(false);
 
+        machineshop.setForeground(new java.awt.Color(204, 204, 204));
         machineshop.setText("Machine Shop");
+        machineshop.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        machineshop.setFocusable(false);
 
+        controltower.setForeground(new java.awt.Color(204, 204, 204));
         controltower.setText("Control Tower");
+        controltower.setFocusable(false);
 
+        comsat.setForeground(new java.awt.Color(204, 204, 204));
         comsat.setText("Comsat Station");
+        comsat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comsat.setFocusable(false);
 
+        turret.setForeground(new java.awt.Color(204, 204, 204));
         turret.setText("Missile Turret");
+        turret.setFocusable(false);
 
+        bunker.setForeground(new java.awt.Color(204, 204, 204));
         bunker.setText("Bunker");
+        bunker.setFocusable(false);
 
+        science.setForeground(new java.awt.Color(204, 204, 204));
         science.setText("Science Facility");
+        science.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        science.setFocusable(false);
 
+        physicslab.setForeground(new java.awt.Color(204, 204, 204));
         physicslab.setText("Physics Lab");
+        physicslab.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        physicslab.setFocusable(false);
 
+        covertops.setForeground(new java.awt.Color(204, 204, 204));
         covertops.setText("Covert Ops");
+        covertops.setFocusable(false);
 
+        nuclearsilo.setForeground(new java.awt.Color(204, 204, 204));
         nuclearsilo.setText("Nuclear Silo");
+        nuclearsilo.setFocusable(false);
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -295,19 +344,6 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jInternalFrame1.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
-        );
-
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -333,7 +369,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(unitsHealthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2))))
-                        .addGap(0, 41, Short.MAX_VALUE))
+                        .addGap(0, 40, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(mapImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -418,10 +454,6 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jInternalFrame1)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,9 +545,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(mapImagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -523,7 +553,6 @@ public class GUI extends javax.swing.JFrame {
 
     // Action button, updates map info, enemy info, and player statistics
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        display(); // updates pie chart of players stats
         update(); // updates map and players movements and enemy stats
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -535,18 +564,17 @@ public class GUI extends javax.swing.JFrame {
         for (String s : words) {
             stringList.add(s);
         }
-        //stringList = (ArrayList<String>) Arrays.asList(new String[]{"missleturret","engineeringbay","supplydepot","factory",
-        //"barrcks","bunker","commandCenter","armory","starport","refinery","sciencefaciliy","academy"});
+        
         ResultSet results = gui.queryEnemyAbilities();
-        // jTextPane1.setText("Importing Ontology...\n");
+        
         while (results.hasNext()) {
             QuerySolution soln = results.nextSolution();
-            //System.out.println(soln);
+            
             String matchTrain = "canTrain";
             String matchBuild = "canBuild";
             if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length()))) {
-                //jTextArea1.append(soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Avaliable", "") + "\n");
-                Color c = new Color(0, 206, 209);
+                
+                Color c = new Color(0,0,0);
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("marine")) {
                     marine.setForeground(c);
                 }
@@ -585,7 +613,7 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
             if (soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-                Color c = new Color(0, 206, 209);
+                Color c = new Color(0, 0, 0);
                 if (soln.getResource("o").toString().replace(GUIInterface.NS, "").replace("Available", "").equals("factory")) {
                     factor.setForeground(c);
                 }
@@ -644,7 +672,7 @@ public class GUI extends javax.swing.JFrame {
         }
     }
 
-    // Keeps track o player and enemy positions on map and overlays them too to the GUI
+    // Keeps track of player and enemy positions on map and overlays them too to the GUI
     public void updateRegionStates(GUIInterface gui) {
         ResultSet resultsC = gui.queryContestedRegions();
         // For each region that is controlled by a player
@@ -680,11 +708,11 @@ public class GUI extends javax.swing.JFrame {
             mapImageOriginal = ImageIO.read(new File("heartbreakridge.jpg"));
         } catch (IOException ex) {
             System.out.append("Could not read original map image from file");
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // then draw all contested coords not in battle coords
-        // EWWWW - hardcoded map height and width, only works on heartbreak ridge
+        // heartbreakridge
         int mapHeight = 96 * 32;
         int mapWidth = 128 * 32;
         ResultSet myUnitsResults = gui.queryMyUnits();
@@ -730,25 +758,28 @@ public class GUI extends javax.swing.JFrame {
      */
     private BufferedImage redrawMapImage(BufferedImage origImage, ArrayList<Pair<Integer, Integer>> contestedCoords,
             ArrayList<Pair<Integer, Integer>> battleCoords, int mapHeight, int mapWidth, ArrayList<Pair<Integer, Integer>> myUnits, ArrayList<Pair<Integer, Integer>> enemyUnits) {
+        
         int w = origImage.getWidth();
         int h = origImage.getHeight();
+        
         double heightScale = mapHeight / h;
         double widthScale = mapWidth / w;
-        //BufferedImage img = new BufferedImage(
-        //         w, h, BufferedImage.TYPE_INT_ARGB);
+        
         BufferedImage img = origImage;
         Graphics2D g2d = img.createGraphics();
         g2d.drawImage(origImage, 0, 0, null);
         g2d.setPaint(Color.green);
-        // draw green dots where our units are
+        
+        // draw green rectangles where our units are
         for (Pair<Integer, Integer> u : myUnits) {
             int adjustedX = (int) ((double) u.car() / heightScale);
             int adjustedY = (int) ((double) u.cdr() / widthScale);
             g2d.drawRect(adjustedX, adjustedY, 2, 2);
         }
-        // draw red dots where enemy units are
+        
+        // draw red rectangles where enemy units are
         g2d.setPaint(Color.red);
-        // draw green dots where our units are
+
         if (enemyUnits != null) {
             for (Pair<Integer, Integer> u : enemyUnits) {
                 int adjustedX = (int) ((double) u.car() / heightScale);
@@ -756,17 +787,20 @@ public class GUI extends javax.swing.JFrame {
                 g2d.drawRect(adjustedX, adjustedY, 2, 2);
             }
         }
+        
         // draw red exclamantion marks for each battle region
         g2d.setPaint(Color.red);
         g2d.setFont(new Font("Serif", Font.BOLD, 24));
         String battleStr = "!!!";
         FontMetrics fm = g2d.getFontMetrics();
+        
         for (Pair<Integer, Integer> b : battleCoords) {
             int adjustedX = (int) ((double) b.car() / heightScale);
             int adjustedY = (int) ((double) b.cdr() / widthScale);
             g2d.drawString(battleStr, adjustedX, adjustedY);
         }
-        // now draw yellow question marks for contesed (but not battle) regions
+        
+        // now draw yellow question marks for contested (but not battle) regions
         g2d.setPaint(Color.yellow);
         g2d.setFont(new Font("Serif", Font.BOLD, 24));
         battleStr = "???";
@@ -778,9 +812,7 @@ public class GUI extends javax.swing.JFrame {
                 g2d.drawString(battleStr, adjustedX, adjustedY);
             }
         }
-        //int x = img.getWidth() - fm.stringWidth(s) - 5;
-        //int y = fm.getHeight();
-        //g2d.drawString(s, x, y);
+        
         g2d.dispose();
         return img;
     }
@@ -799,19 +831,19 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI().setVisible(true);
+                new gui().setVisible(true);
             }
         });
     }
@@ -835,7 +867,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

@@ -1,16 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author Kostas Hatalis
+ * Author: Kostas Hatalis 
+ * Filename: GUIInterface.java 
+ * Class: CSE428 - Semantic Web 
+ * Assignment: Final Project 
+ * Description:	Class representation of code that
+ * retrieves data to be processed and later displayed by the gui class. Contains
+ * all of the SPARQL queries.
  */
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.query.ResultSetFormatter;
 
 public class GUIInterface {
 
@@ -45,20 +45,7 @@ public class GUIInterface {
         // format results and send to standard out
         //ResultSetFormatter.out(System.out, results, query);
 
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-        // System.out.println(results);
     }
 
     /**
@@ -88,20 +75,7 @@ public class GUIInterface {
         // format results and send to standard out
         //ResultSetFormatter.out(System.out, results, query);
 
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-        // System.out.println(results);
     }
 
     public ResultSet queryBattleRegions() {
@@ -125,23 +99,9 @@ public class GUIInterface {
         // format results and send to standard out
         //ResultSetFormatter.out(System.out, results, query);
 
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-        // System.out.println(results);
-
     }
-    
+
     public ResultSet queryMyUnits() {
         String queryString = "PREFIX sc:<" + jena.getNS() + ">"
                 + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
@@ -164,22 +124,9 @@ public class GUIInterface {
         // format results and send to standard out
         //ResultSetFormatter.out(System.out, results, query);
 
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-        // System.out.println(results);
     }
-    
+
     public ResultSet queryEnemyUnits() {
         String queryString = "PREFIX sc:<" + jena.getNS() + ">"
                 + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
@@ -202,22 +149,9 @@ public class GUIInterface {
         // format results and send to standard out
         //ResultSetFormatter.out(System.out, results, query);
 
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-        // System.out.println(results);
     }
-    
+
     public ResultSet queryArmyHealth() {
         String queryString = "PREFIX sc:<" + jena.getNS() + ">"
                 + "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"
@@ -237,47 +171,10 @@ public class GUIInterface {
         // make query object
         Query query = QueryFactory.create(queryString);
 
-        // format results and send to standard out
-        //ResultSetFormatter.out(System.out, results, query);
-
-        // Get all units that a player can build and train
-       /* while (results.hasNext()) {
-         QuerySolution soln = results.nextSolution();
-         //System.out.println(soln);
-         String matchTrain = "canTrain";
-         String matchBuild = "canBuild";
-         if (soln.getResource("p").toString().contains(matchTrain.subSequence(0, matchTrain.length())) ||
-         soln.getResource("p").toString().contains(matchBuild.subSequence(0, matchBuild.length()))) {
-         System.out.println(soln.getResource("o").toString().replace(NS,""));
-         }  
-         }*/
-
         return results;
-    }
-    
-    /* sample query
-     * /System.out.println(gameState);
-     String queryString = "PREFIX sc:<"+jena.getNS()+">" +
-     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
-     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"+
-     "SELECT ?s ?p ?o " +
-     "WHERE {"+
-     "?s rdf:type sc:Player ."+
-     "?s ?p ?o ."+
-     "}";
-     */
-    public void FormatResults(ResultSet results) {
-
-        // find all triples where the player is player
-
-
-        String s = "something";
-
     }
 
     public boolean isContestedRegion(int regionId) {
         return true;
     }
-
-    
 }
