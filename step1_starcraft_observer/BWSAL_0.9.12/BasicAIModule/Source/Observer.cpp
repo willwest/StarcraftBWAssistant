@@ -2,14 +2,19 @@
 #include "../Addons/Util.h"
 #include <iostream>
 #include <fstream>
+#include <Windows.h>
+#include <ctime>
+#include "GamestateDumper.h"
 using namespace BWAPI;
 
 void Observer::onStart()
 {
 	currFrame = 0;
-	pullFrequency = 500;
-	// leave off file extension because curr frame will be added
-	dataFilename = "C:\\Users\\dustin\\Desktop\\Current Projects\\StarcraftObserver\\GameStateOutput\\gameStateData-JSON-"; 
+	pullFrequency = 50;
+	// THIS DISPLAYS THE CURRENT DIRECTORY
+	//TCHAR pwd[MAX_PATH];
+	//GetCurrentDirectory(MAX_PATH,pwd);
+	//MessageBox(NULL,pwd,pwd,0);
 
 	if (Broodwar->isReplay()) return;
 	// Enable some cheat flags
@@ -43,150 +48,197 @@ void Observer::onStart()
 		}
 	}
 
-	// get information on regions once BWTA is finished analyzing
-	if (this->analyzed) {
-		int currRegionID = 0;
-		for (std::set<BWTA::Region*>::const_iterator r = BWTA::getRegions().begin();
-			r != BWTA::getRegions().end(); r++) {
-				regionIDs.insert(std::make_pair((*r), currRegionID));
-				currRegionID++;
-		}
-	}
-
-	// get information on chokepoints
-	if (this->analyzed) {
-		int currChokeID = 0;
-		for (std::set<BWTA::Chokepoint*>::const_iterator c = BWTA::getChokepoints().begin();
-			c != BWTA::getChokepoints().end(); c++) {
-				chokePointIDs.insert(std::make_pair((*c), currChokeID));
-				currChokeID++;
-		}
-	}
+	gsDumper.setup(this->analyzed);			
+	
 }
 
-std::string Observer::pullData() {
-
-	std::string output = "";
-
-	// Game data
-	output += "{\"gameID\":\"0\",\n";
-	output += " \"mapName\":\"" + Broodwar->mapFileName() + "\",\n";
-
-	// Player data
-	output += " \"players\":[\n";
-	output += "    {\"playerId\":\"" + SSTR(Broodwar->self()->getID()) + "\",\n";
-
-	// Units data for the units our player controls
-	output += "     \"myUnits\":[\n";
-
-	std::set<BWAPI::Unit*>::const_iterator u = Broodwar->self()->getUnits().begin();
-	while (u != Broodwar->self()->getUnits().end()) {
-		output += "         {\"unitID\":\"" + SSTR((*u)->getID());
-		output += "\",\"unitTypeID\":\"" + SSTR((*u)->getType().getID());
-		output += "\",\"currentHitPoints\":\"" + SSTR((*u)->getHitPoints());
-		output += "\",\"maxHitPoints\":\"" + SSTR((*u)->getType().maxHitPoints());
-		output += "\",\"isBeingAttacked\":\"" + SSTR((*u)->isUnderAttack());
-		output += "\",\"x\":\"" + SSTR((*u)->getPosition().x());
-		output += "\",\"y\":\"" + SSTR((*u)->getPosition().y());
-		int rID = regionIDs[BWTA::getRegion((*u)->getPosition())];
-		output += "\",\"regionID\":\"" + SSTR(rID);
-		output += "\",\"armor\":\"" + SSTR((*u)->getType().armor()); // un-upgraded armor
-		output += "\",\"mineralCost\":\"" + SSTR((*u)->getType().mineralPrice());
-		output += "\",\"gasCost\":\"" + SSTR((*u)->getType().gasPrice());
-		output += "\"},\n";	
-
-		u++;
-	}
-	// remove the last comma (-2 for \n and the ,) then add the newline back
-	output = output.substr(0, output.length()-2) + "\n";
-	output += "\n               ],\n"; // ends the myUnits array
-	// Units data for the units that our player sees but doesn't control
-	output += "     \"enemyUnits\":[\n";
-
-	BWAPI::Player* ePlayer = Broodwar->getPlayer(1);
-	BWAPI::Player* me = Broodwar->self();
-	std::set<BWAPI::Unit*>::const_iterator e = ePlayer->getUnits().begin();
-	bool enemyUnitExists = false; 
-	while (e != ePlayer->getUnits().end()) {
-		if ((*e)->isVisible(me)) {
-			output += "         {\"unitID\":\"" + SSTR((*e)->getID());
-			output += "\",\"unitTypeID\":\"" + SSTR((*e)->getType().getID());
-			output += "\",\"currentHitPoints\":\"" + SSTR((*e)->getHitPoints());
-			output += "\",\"maxHitPoints\":\"" + SSTR((*e)->getType().maxHitPoints());
-			output += "\",\"isBeingAttacked\":\"" + SSTR((*e)->isUnderAttack());
-			output += "\",\"x\":\"" + SSTR((*e)->getPosition().x());
-			output += "\",\"y\":\"" + SSTR((*e)->getPosition().y());
-			int rID = regionIDs[BWTA::getRegion((*e)->getPosition())];
-			output += "\",\"regionID\":\"" + SSTR(rID);
-			output += "\",\"armor\":\"" + SSTR((*e)->getType().armor()); // un-upgraded armor
-			output += "\",\"mineralCost\":\"" + SSTR((*e)->getType().mineralPrice());
-			output += "\",\"gasCost\":\"" + SSTR((*e)->getType().gasPrice());
-			output += "\"},\n";	
-			enemyUnitExists = true;
-		}
-		e++;
-	}
-
-	if (enemyUnitExists) {
-		// remove the last comma (-2 for \n and the ,) then add the newline back
-		output = output.substr(0, output.length()-2) + "\n";
-	}
-
-
-	output += "            ]\n"; // ends the enemyUnits array
-	output += "    }],\n";
-	// Region data
-	output += "\n \"regions\":[\n";
-	std::map<BWTA::Region*, int>::const_iterator r = regionIDs.begin();
-	while (r != regionIDs.end()) {
-		output += "     {\"regionID\":\"" + SSTR((*r).second);
-		output += "\",\"regionCenterX\":\"" + SSTR((*r).first->getCenter().x());
-		output += "\",\"regionCenterY\":\"" + SSTR((*r).first->getCenter().y());
-		output += "\"},\n";
-		r++;
-	}
-	// remove the last comma (-2 for \n and the ,) then add the newline back
-	output = output.substr(0, output.length()-2) + "\n";
-	output += "\n           ],\n"; // ends the regions array
-
-	// Chokepoint data
-	output += "\n \"chokepoints\":[\n";
-	//Broodwar->sendText("Dumping game state data, there are %d chokepoints",currFrame);
-	std::map<const BWTA::Chokepoint*, int>::const_iterator c = chokePointIDs.begin();
-	while (c != chokePointIDs.end()) {
-		output += "     {\"chokepointID\":\"" + SSTR((*c).second);
-		output += "\",\"chokepointCenterX\":\"" + SSTR((*c).first->getCenter().x());
-		output += "\",\"chokepointCenterY\":\"" + SSTR((*c).first->getCenter().y());
-		int rID1 = regionIDs[(*c).first->getRegions().first];
-		int rID2 = regionIDs[(*c).first->getRegions().second];
-		output += "\",\"connectedToRegionOneID\":\"" + SSTR(rID1);
-		output += "\",\"connectedToRegionTwoID\":\"" + SSTR(rID2);
-		output += "\"},\n";
-		c++;
-	}
-
-	// remove the last comma (-2 for \n and the ,) then add the newline back
-	output = output.substr(0, output.length()-2) + "\n";
-	output += "\n               ]\n"; // end choke points array
-
-	output += "}\n"; // end game object
-
-	return output;
-}
+//void Observer::pullDataAndWriteToFile(std::string outputFileName, int frame) {
+//	errorLogOutputFile << "[pullData()] beginning of method\n";
+//	errorLogOutputFile.flush();
+//
+//	std::ofstream outputFile;
+//	outputFile.open((outputFileName +  SSTR(frame) + ".txt").c_str());
+//
+//	std::string output = "";
+//
+//	// Game data
+//	output += "{\"gameID\":\"0\",\n";
+//	output += " \"mapName\":\"" + Broodwar->mapFileName() + "\",\n";
+//	output += " \"elapsedTime\":\"" + SSTR(Broodwar->elapsedTime()) + "\",\n";
+//
+//	errorLogOutputFile << "[pullData()] pulled gamestate data\n";
+//	errorLogOutputFile.flush();
+//
+//	// Player data
+//	output += " \"players\":[\n";
+//
+//	// remove the last comma (-2 for \n and the ,) then add the newline back
+//	//output = output.substr(0, output.length()-2) + "\n";
+//	//output += "\n               ],\n"; // ends the myUnits array
+//	// Units data for the units that our player sees but doesn't control
+//	//output += "     \"enemyUnits\":[\n";
+//
+//	BWAPI::Player* me = Broodwar->self();
+//
+//	//BWAPI::Player* ePlayer;
+//
+//	boolean currPlayerHasUnit = false;
+//
+//	// loop over all the players and find the one that is an enemy and not neutral
+//	int count = 0; // this is hacky...ewww - but I don't know how to turn an iterator into player 
+//	// object
+//	int numPlayers = Broodwar->getPlayers().size();
+//	for (int i = 0; i < numPlayers; i++) {
+//		BWAPI::Player* currPlayer = Broodwar->getPlayer(i);
+//		if (!currPlayer->isNeutral()) {
+//
+//			if (currPlayer == Broodwar->self()) {
+//				// I am always player 0
+//				output += "    {\"playerId\":\"0\",\n";
+//			}else{
+//				// Enemy is always player 1
+//				output += "    {\"playerId\":\"1\",\n";
+//			}
+//
+//			if (currPlayer->getUnits().size() == 0) {
+//				output = output.substr(0, output.length()-2) + "},\n";
+//			}else{
+//
+//				// Units data for the units our player controls
+//				output += "     \"myUnits\":[\n";
+//
+//				std::set<BWAPI::Unit*>::const_iterator u = currPlayer->getUnits().begin();
+//				while (u != currPlayer->getUnits().end()) {
+//
+//					currPlayerHasUnit = true;
+//
+//
+//					output += "         {\"unitID\":\"" + SSTR((*u)->getID());
+//					//output += "\",\"unitTypeID\":\"" + SSTR((*u)->getType().getID());
+//					output += "\",\"unitType\":\"" + (*u)->getType().getName();
+//					output += "\",\"currentHitPoints\":\"" + SSTR((*u)->getHitPoints());
+//					output += "\",\"maxHitPoints\":\"" + SSTR((*u)->getType().maxHitPoints());
+//					output += "\",\"isBeingAttacked\":\"" + SSTR((*u)->isUnderAttack());
+//					output += "\",\"x\":\"" + SSTR((*u)->getPosition().x());
+//					output += "\",\"y\":\"" + SSTR((*u)->getPosition().y());
+//					int rID = regionIDs[BWTA::getRegion((*u)->getPosition())];
+//					output += "\",\"regionID\":\"" + SSTR(rID);
+//					output += "\",\"armor\":\"" + SSTR((*u)->getType().armor()); // un-upgraded armor
+//					output += "\",\"mineralCost\":\"" + SSTR((*u)->getType().mineralPrice());
+//					output += "\",\"gasCost\":\"" + SSTR((*u)->getType().gasPrice());
+//					output += "\"},\n";	
+//
+//					u++;
+//				}
+//				// remove the last comma (-2 for \n and the ,) then add the newline back
+//				if (currPlayerHasUnit) {
+//					output = output.substr(0, output.length()-2) + "\n";
+//				}
+//				output += "\n               ]},\n"; // ends the myUnits array
+//			}
+//		}
+//
+//	} // ends the player loop
+//
+//
+//	output = output.substr(0, output.length()-2) + "\n"; // trim the last comma
+//
+//	
+//
+//
+//	// old version of getting the enemy player
+//	// BWAPI::Player* ePlayer = Broodwar->getPlayer(1);
+//
+//
+//	output += "            ],\n"; // ends the players array
+//
+//	// write to file, flush, and reset the string
+//	outputFile << output;
+//	outputFile.flush();
+//	output = "";
+//
+//	errorLogOutputFile << "[pullData()] pulled player (including units) data\n";
+//	errorLogOutputFile.flush();
+//
+//
+//	// Region data
+//	output += "\n \"regions\":[\n";
+//	std::map<BWTA::Region*, int>::const_iterator r = regionIDs.begin();
+//	while (r != regionIDs.end()) {
+//		output += "     {\"regionID\":\"" + SSTR((*r).second);
+//		output += "\",\"regionCenterX\":\"" + SSTR((*r).first->getCenter().x());
+//		output += "\",\"regionCenterY\":\"" + SSTR((*r).first->getCenter().y());
+//		output += "\"},\n";
+//		r++;
+//	}
+//	// remove the last comma (-2 for \n and the ,) then add the newline back
+//	output = output.substr(0, output.length()-2) + "\n";
+//	output += "\n           ],\n"; // ends the regions array
+//
+//	errorLogOutputFile << "[pullData()] pulled region data\n";
+//	errorLogOutputFile.flush();
+//
+//	// Chokepoint data
+//	output += "\n \"chokepoints\":[\n";
+//	//Broodwar->sendText("Dumping game state data, there are %d chokepoints",currFrame);
+//	std::map<const BWTA::Chokepoint*, int>::const_iterator c = chokePointIDs.begin();
+//	while (c != chokePointIDs.end()) {
+//		output += "     {\"chokepointID\":\"" + SSTR((*c).second);
+//		output += "\",\"chokepointCenterX\":\"" + SSTR((*c).first->getCenter().x());
+//		output += "\",\"chokepointCenterY\":\"" + SSTR((*c).first->getCenter().y());
+//		int rID1 = regionIDs[(*c).first->getRegions().first];
+//		int rID2 = regionIDs[(*c).first->getRegions().second];
+//		output += "\",\"connectedToRegionOneID\":\"" + SSTR(rID1);
+//		output += "\",\"connectedToRegionTwoID\":\"" + SSTR(rID2);
+//		output += "\"},\n";
+//		c++;
+//	}
+//
+//	// remove the last comma (-2 for \n and the ,) then add the newline back
+//	output = output.substr(0, output.length()-2) + "\n";
+//	output += "\n               ]\n"; // end choke points array
+//
+//	errorLogOutputFile << "[pullData()] pulled chokepoint data\n";
+//	errorLogOutputFile.flush();
+//
+//	output += "}\n"; // end game object
+//
+//	errorLogOutputFile << "[pullData()] end of method\n";
+//	errorLogOutputFile.flush();
+//
+//
+//
+//
+//	outputFile << output;
+//	outputFile.close();
+//
+//	// now update log file with this file name
+//	// then update the log file
+//	std::ofstream logOutputFile;
+//	logOutputFile.open(logFilename.c_str(), std::fstream::ate);
+//	logOutputFile << "\n" + outputFileName + SSTR(frame) + ".txt";
+//	logOutputFile.close();
+//}
 
 // takes a frame argument to make the filename unique if called multiple times
-void Observer::writeToFile(std::string filename, int frame, std::string data) {
-	std::ofstream outputFile;
-	outputFile.open((filename +  SSTR(frame) + ".txt").c_str());
-	outputFile << data;
-	outputFile.close();
-}
+//void Observer::writeToFile(std::string filename, int frame, std::string data) {
+//	// write the gamestate output file first
+//	std::ofstream outputFile;
+//	outputFile.open((filename +  SSTR(frame) + ".txt").c_str());
+//	outputFile << data;
+//	outputFile.close();
+//
+//	
+//
+//	
+//}
 
 Observer::~Observer() {}
 
 void Observer::onEnd(bool isWinner)
 {
 	log("onEnd(%d)\n",isWinner);
+	gsDumper.finish();
 }
 void Observer::onFrame()
 {
@@ -195,10 +247,7 @@ void Observer::onFrame()
 	currFrame++;
 
 	if (currFrame % pullFrequency == 0) {
-		Broodwar->sendText("Dumping game state data, current Frame is %d",currFrame);
-		//Broodwar->sendText(pullData().c_str());
-		writeToFile(dataFilename, currFrame, pullData());
-		//Broodwar->sendText("Current Frame is %d",currFrame);
+		gsDumper.dumpGameState();
 	}
 }
 

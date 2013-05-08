@@ -2,10 +2,10 @@
 #include <BWAPI.h>
 #include <BWTA.h>
 #include <sstream>
+#include <iostream>
+#include <fstream>
+#include "GamestateDumper.h"
 
-// macro for converting ints to strings
-#define SSTR( x ) dynamic_cast< std::ostringstream & >( \
-        ( std::ostringstream() << std::dec << x ) ).str()
 
 class Observer : public BWAPI::AIModule
 {
@@ -27,23 +27,15 @@ public:
   std::map<BWAPI::Unit*,BWAPI::UnitType> buildings;
 
   // returns a JSON formatted string that can be turned into RDF triples easily
-  std::string pullData();
+  void pullDataAndWriteToFile(std::string, int);
   void writeToFile(std::string, int frame, std::string);
 
 private:
 	// represents the current frame, updated every time onFrame() is called
 	int currFrame;
-	// how often to dump gamestate data to file
-	int pullFrequency; 
-
-	// filename where JSON formatted game state data will be written
-	std::string dataFilename;
-
-	// maps every region to an id using the BWAPI::Position of the center of the region as its
-	// unique identifier
-	std::map<BWTA::Region*, int> regionIDs;
-
-	std::map<const BWTA::Chokepoint*, int> chokePointIDs;
+	int pullFrequency;
+	GamestateDumper gsDumper;
+	
 
 
 	
