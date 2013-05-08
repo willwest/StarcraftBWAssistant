@@ -15,6 +15,11 @@ Currently there are some issues creating a local portable folder containing the 
 
 As a disclaimer, this was a group project turned in for a class, and most likely will not be used by itself again. Consider it a proof of concept. Still not a good justification for ugly code. Our apologies.
 
+File Organization
+=================
+
+
+
 
 
 
