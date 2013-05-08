@@ -2,8 +2,8 @@ StarcraftBWAssistant
 ====================
 
 Developers:
-Will West (wmw212 at lehigh dot edu)
-Dustin Dannenhauer (dtd212 at lehigh dot edu)
+Will West (wmw212 at lehigh dot edu), 
+Dustin Dannenhauer (dtd212 at lehigh dot edu), 
 Kostas Hatalis (kmh511 at lehigh dot edu)
 
 Project Description
