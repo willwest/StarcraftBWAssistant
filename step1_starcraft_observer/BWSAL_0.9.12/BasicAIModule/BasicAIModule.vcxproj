@@ -143,12 +143,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GamestateDumper.cpp" />
     <ClCompile Include="Source\Observer.cpp" />
     <ClCompile Include="Source\Dll.cpp" />
     <ClCompile Include="..\Addons\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Common.h" />
+    <ClInclude Include="Source\GamestateDumper.h" />
     <ClInclude Include="Source\Observer.h" />
     <ClInclude Include="..\Addons\Util.h" />
   </ItemGroup>

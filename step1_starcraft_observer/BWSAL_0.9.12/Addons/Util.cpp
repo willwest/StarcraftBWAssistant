@@ -2,6 +2,10 @@
 #include <fstream>
 #include <stdarg.h>
 #include <sys/stat.h>
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <time.h>
 char buffer[1024];
 void log(const char* text, ...)
 {
@@ -20,3 +24,4 @@ void log(const char* text, ...)
     fclose(outfile);
   }
 }
+
